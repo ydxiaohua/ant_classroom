@@ -73,6 +73,8 @@ public class BaomingController {
     @RequestMapping(value="/queryvipuserlist")
     @ResponseBody
     public List<People> queryvipuserlist(Integer phone,String peoplenickname,Integer minage,Integer maxage){
+        System.out.println(minage);
+        System.out.println(maxage);
         List<People> list = baomingService.queryvipuserlist(phone,peoplenickname,minage,maxage);
         return list;
     }

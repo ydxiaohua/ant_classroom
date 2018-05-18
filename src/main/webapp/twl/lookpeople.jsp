@@ -98,7 +98,7 @@
                     'phone':$("#a1").val(),
                     'peoplenickname':$("#a2").val(),
                     'minage':$("#a3").val(),
-                    'minmax':$("#a4").val(),
+                    'maxage':$("#a4").val(),
                     page:this.pageNumber,//当前页
                     rows:this.pageSize //每页条数
                 }
