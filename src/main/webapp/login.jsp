@@ -37,8 +37,6 @@
         var   username=$("[name='username']").val();
         var   userpass=$("[name='userpass']").val();
 
-        alert(username)
-        alert(userpass)
         $.ajax({
             type:"post",
             url:"<%=request.getContextPath()%>/user/loginuser",

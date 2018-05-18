@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Insert title here</title>\
+    <title>报名用户信息</title>\
 
     <!-- Bootstrap 插件 css -->
     <link href="<%=request.getContextPath() %>/bootstrap/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
@@ -25,7 +25,7 @@
 </head>
 <body>
 
-
+<div>&nbsp;&nbsp;<a class="glyphicon glyphicon-plus" onclick="insertbuser()">添加</a></div>
 <table class="table" id="baouser" border="1"></table>
 
 <!--jQuery核心js  -->
@@ -54,13 +54,14 @@
 
 <script type="text/javascript">
 
+    //查询
     $("#baouser").bootstrapTable({
         url:"<%=request.getContextPath()%>/baoming/querybaolist",
         striped: true,//隔行变色
-        showPaginationSwitch:true,//是否显示 数据条数选择框
+        showPaginationSwitch:false,//是否显示 数据条数选择框
         minimumCountColumns:1,//最小留下一个
-        showRefresh:true,//显示刷新按钮
-        showToggle:true,//显示切换视图
+        showRefresh:false,//显示刷新按钮
+        showToggle:false,//显示切换视图
         //search:true,//是否显示搜索框
         searchOnEnterKey:true,//设置为 true时，按回车触发搜索方法，否则自动触发搜索方
         //bootstrap默认是客户端分页client 若写服务端则出不来结果server
@@ -87,12 +88,12 @@
                     return xing;
                 }
             },
-            {field:'baouserphone',title:'手机号',width: 100},
-            {field:'baouserqq',title:'QQ号',width: 100},
-            {field:'baouserweixin',title:'微信号',width: 100},
-            {field:'baousermaxxl',title:'最高学历',width: 100},
+            {field:'baouserphone',title:'手机号',width: 50},
+            {field:'baouserqq',title:'QQ号',width: 50},
+            {field:'baouserweixin',title:'微信号',width: 50},
+            {field:'baousermaxxl',title:'最高学历',width: 50},
             {field:'baousergraduatedate',title:'毕业时间',width: 100},
-            {field:'presentpay',title:'当前薪资',width: 100},
+            {field:'presentpay',title:'当前薪资',width: 50},
             {field:'presentstatus',title:'当前状态',width: 100},
             {field:'act',title:'操作',width:100,
                 formatter: function(value,row,index){
@@ -101,6 +102,7 @@
         ]
     })
 
+    //删除
     function deletebaoming(id){
         BootstrapDialog.show({
             title:'',
@@ -109,9 +111,8 @@
                 label: '确定',
                 action: function() {
                     $.ajax({
-                        url:"<%=request.getContextPath()%>/baoming/deletebaoming",
+                        url:"<%=request.getContextPath()%>/baoming/deletebaoming?baouserid="+id,
                         type:"post",
-                        data:{"baouserid":id},
                         success:function(result){
                             location.reload();
                         }
@@ -126,6 +127,58 @@
         })
     }
 
+    //修改
+    function updatebaoming(id){
+        BootstrapDialog.show({
+            title: '修改信息',
+            message: $('<div></div>').load('<%=request.getContextPath()%>/baoming/selectid?baouserid='+id),
+            buttons: [{
+                label: '保存',
+                action: function() {
+                    $.ajax({
+                        url:"<%=request.getContextPath()%>/baoming/updatebaoming",
+                        type:"post",
+                        data:$("#updateForm").serialize(),
+                        success:function(result){
+                            location.reload();
+                        }
+                    })
+                }
+            },{
+                label: '取消',
+                action:function(result) {
+                    result.close();
+                }
+            }]
+        })
+
+    }
+
+    //添加
+    function insertbuser(){
+        BootstrapDialog.show({
+            title: '添加信息',
+            message: $('<div></div>').load('<%=request.getContextPath()%>/twl/addbaouser.jsp'),
+            buttons: [{
+                label: '添加',
+                action: function() {
+                    $.ajax({
+                        url:"<%=request.getContextPath()%>/baoming/addbaoming",
+                        type:"post",
+                        data:$("#addForm").serialize(),
+                        success:function(result){
+                            location.reload();
+                        }
+                    })
+                }
+            },{
+                label: '取消',
+                action:function(result) {
+                    result.close();
+                }
+            }]
+        })
+    }
 </script>
 </body>
 </html>
