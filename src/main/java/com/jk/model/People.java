@@ -22,6 +22,9 @@ public class People implements Serializable {
     private Integer peoplesex;
     private Integer peopleage;
 
+    private Integer minage;
+    private Integer maxage;
+
     public Integer getPeopleid() {
         return peopleid;
     }
@@ -100,6 +103,22 @@ public class People implements Serializable {
 
     public void setPeopleage(Integer peopleage) {
         this.peopleage = peopleage;
+    }
+
+    public Integer getMinage() {
+        return minage;
+    }
+
+    public void setMinage(Integer minage) {
+        this.minage = minage;
+    }
+
+    public Integer getMaxage() {
+        return maxage;
+    }
+
+    public void setMaxage(Integer maxage) {
+        this.maxage = maxage;
     }
 
     @Override

@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>报名用户信息</title>\
+    <title>报名用户信息</title>
 
     <!-- Bootstrap 插件 css -->
     <link href="<%=request.getContextPath() %>/bootstrap/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
@@ -33,7 +33,8 @@
         用户名:<input type="text" class="form-control" id="a2" name="peoplenickname">
     </div>&nbsp&nbsp&nbsp
     <div class="form-group">
-        年龄:<input type="text" class="form-control" id="a3" name="peopleage">
+        年龄:<input type="text" class="form-control" id="a3" name="minage">至
+            <input type="text" class="form-control" id="a4" name="maxage">
     </div>&nbsp&nbsp&nbsp
     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="button" class="btn btn-success" onclick="search()" value="搜索"/>
@@ -96,7 +97,8 @@
                 return {
                     'phone':$("#a1").val(),
                     'peoplenickname':$("#a2").val(),
-                    'peopleage':$("#a3").val(),
+                    'minage':$("#a3").val(),
+                    'minmax':$("#a4").val(),
                     page:this.pageNumber,//当前页
                     rows:this.pageSize //每页条数
                 }

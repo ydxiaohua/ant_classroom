@@ -72,11 +72,8 @@ public class BaomingController {
     //查询vip用户
     @RequestMapping(value="/queryvipuserlist")
     @ResponseBody
-    public List<People> queryvipuserlist(Integer phone,String peoplenickname,Integer peopleage){
-        System.out.println(phone);
-        System.out.println(peoplenickname);
-        System.out.println(peopleage);
-        List<People> list = baomingService.queryvipuserlist(phone,peoplenickname,peopleage);
+    public List<People> queryvipuserlist(Integer phone,String peoplenickname,Integer minage,Integer maxage){
+        List<People> list = baomingService.queryvipuserlist(phone,peoplenickname,minage,maxage);
         return list;
     }
 
