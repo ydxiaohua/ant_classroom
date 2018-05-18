@@ -5,7 +5,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 
-@Document(collection="userlogin")
+@Document(collection = "UserLo")
 public class User implements Serializable{
 
     private static final long serialVersionUID = -7567065163375619856L;
@@ -16,8 +16,10 @@ public class User implements Serializable{
 
     private   String   userpass;
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
+    private   String   ztid;
+
+   public static long getSerialVersionUID() {
+       return serialVersionUID;
     }
 
     public Integer getUserid() {
@@ -36,13 +38,20 @@ public class User implements Serializable{
         this.username = username;
     }
 
-
     public String getUserpass() {
         return userpass;
     }
 
     public void setUserpass(String userpass) {
         this.userpass = userpass;
+    }
+
+    public String getZtid() {
+        return ztid;
+    }
+
+    public void setZtid(String ztid) {
+        this.ztid = ztid;
     }
 
 
@@ -52,9 +61,7 @@ public class User implements Serializable{
                 "userid=" + userid +
                 ", username='" + username + '\'' +
                 ", userpass='" + userpass + '\'' +
+                ", ztid='" + ztid + '\'' +
                 '}';
     }
-
-
-
 }

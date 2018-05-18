@@ -51,7 +51,8 @@
                     alert("密码错误")
                 }
                 if(msg == '2'){
-                    location.hre="<%=request.getContextPath()%>/index.jsp"
+
+                    location.href="<%=request.getContextPath()%>/index.jsp"
                 }
             },error:function(){
                 alert("程序错误")
