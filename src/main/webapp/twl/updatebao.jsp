@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,8 +19,8 @@
         <tr>
             <td>性别</td>
             <td>
-                <input type="radio" name="baousersex" value="1"/>男
-                <input type="radio" name="baousersex" value="2"/>女
+                <input type="radio" name="baousersex" value="1" <c:if test="${reg.baousersex== '1'}">checked="checked"</c:if>>男
+                <input type="radio" name="baousersex" value="2" <c:if test="${reg.baousersex== '2'}">checked="checked"</c:if>>女
             </td>
         </tr>
         <tr>

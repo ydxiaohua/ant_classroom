@@ -1,5 +1,7 @@
 package com.jk.model;
 
+import org.springframework.data.annotation.Id;
+
 import java.io.Serializable;
 
 /**
@@ -8,11 +10,12 @@ import java.io.Serializable;
 public class Registrationcentre implements Serializable {
     private static final long serialVersionUID = 7306508843024901955L;
 
+    @Id
     private Integer baouserid;
     private String baousername;
     private Integer baousersex;
-    private Integer baouserphone;
-    private Integer baouserqq;
+    private String baouserphone;
+    private String baouserqq;
     private String baouserweixin;
     private String baousermaxxl;
     private String baousergraduatedate;
@@ -44,19 +47,19 @@ public class Registrationcentre implements Serializable {
         this.baousersex = baousersex;
     }
 
-    public Integer getBaouserphone() {
+    public String getBaouserphone() {
         return baouserphone;
     }
 
-    public void setBaouserphone(Integer baouserphone) {
+    public void setBaouserphone(String baouserphone) {
         this.baouserphone = baouserphone;
     }
 
-    public Integer getBaouserqq() {
+    public String getBaouserqq() {
         return baouserqq;
     }
 
-    public void setBaouserqq(Integer baouserqq) {
+    public void setBaouserqq(String baouserqq) {
         this.baouserqq = baouserqq;
     }
 
@@ -114,13 +117,13 @@ public class Registrationcentre implements Serializable {
                 "baouserid=" + baouserid +
                 ", baousername='" + baousername + '\'' +
                 ", baousersex=" + baousersex +
-                ", baouserphone=" + baouserphone +
-                ", baouserqq=" + baouserqq +
+                ", baouserphone='" + baouserphone + '\'' +
+                ", baouserqq='" + baouserqq + '\'' +
                 ", baouserweixin='" + baouserweixin + '\'' +
                 ", baousermaxxl='" + baousermaxxl + '\'' +
                 ", baousergraduatedate='" + baousergraduatedate + '\'' +
                 ", presentpay=" + presentpay +
-                ", presentstatus=" + presentstatus +
+                ", presentstatus='" + presentstatus + '\'' +
                 ", yncontcat=" + yncontcat +
                 '}';
     }

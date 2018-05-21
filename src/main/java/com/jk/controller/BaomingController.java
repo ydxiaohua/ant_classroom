@@ -47,7 +47,6 @@ public class BaomingController {
     public String selectid(String baouserid,HttpServletRequest request){
         Registrationcentre reg = baomingService.selectid(baouserid);
         request.getSession().setAttribute("reg",reg);
-        System.out.println(reg);
         return "twl/updatebao.jsp";
     }
 
@@ -55,6 +54,7 @@ public class BaomingController {
     @RequestMapping(value="/updatebaoming")
     @ResponseBody
     public String updatebaoming(Registrationcentre registrationcentre){
+        System.out.println(registrationcentre);
         baomingService.updatebaoming(registrationcentre);
         return "修改成功";
     }
