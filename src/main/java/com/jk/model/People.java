@@ -13,7 +13,7 @@ public class People implements Serializable {
     @Id
     private Integer peopleid;
     private String email;
-    private Integer phone;
+    private String phone;
     private String peoplepass;
     private Integer ynvip;
     private String vipendtime;
@@ -41,11 +41,11 @@ public class People implements Serializable {
         this.email = email;
     }
 
-    public Integer getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

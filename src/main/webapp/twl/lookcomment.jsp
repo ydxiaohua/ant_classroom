@@ -1,10 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>报名用户信息</title>\
+    <title>评论信息</title>
 
     <!-- Bootstrap 插件 css -->
     <link href="<%=request.getContextPath() %>/bootstrap/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
@@ -25,8 +22,8 @@
 </head>
 <body>
 
-<div>&nbsp;&nbsp;<a class="glyphicon glyphicon-plus" onclick="insertbuser()">添加</a></div>
-<table class="table" id="baouser" border="1"></table>
+<div><a class="glyphicon glyphicon-plus" onclick="insertcomment()">添加</a></div>
+<table class="table" id="comment" border="1"></table>
 
 <!--jQuery核心js  -->
 <script src="<%=request.getContextPath() %>/bootstrap/jquery.min.js"></script>
@@ -54,8 +51,8 @@
 <script type="text/javascript">
 
     //查询
-    $("#baouser").bootstrapTable({
-        url:"<%=request.getContextPath()%>/baoming/querybaolist",
+    $("#comment").bootstrapTable({
+        url:"<%=request.getContextPath()%>/comm/queryComment",
         striped: true,//隔行变色
         showPaginationSwitch:false,//是否显示 数据条数选择框
         minimumCountColumns:1,//最小留下一个
@@ -73,46 +70,32 @@
         method:'post',//发送请求的方式
         contentType:"application/x-www-form-urlencoded",//必须的否则条件查询时会乱码
         columns:[
-            {field:'baouserid',title:'编号',width: 50},
-            {field:'baousername',title:'姓名',width: 50},
-            {field:'baousersex',title:'性别',width: 50,
-                formatter: function(value,row,index){
-                    var xing = "";
-                    var ss = row.baousersex;
-                    if(ss==1){
-                        xing="男";
-                    }else{
-                        xing="女";
-                    }
-                    return xing;
-                }
-            },
-            {field:'baouserphone',title:'手机号',width: 50},
-            {field:'baouserqq',title:'QQ号',width: 50},
-            {field:'baouserweixin',title:'微信号',width: 50},
-            {field:'baousermaxxl',title:'最高学历',width: 50},
-            {field:'baousergraduatedate',title:'毕业时间',width: 100},
-            {field:'presentpay',title:'当前薪资',width: 50},
-            {field:'presentstatus',title:'当前状态',width: 100},
+            {field:'comid',title:'编号',width: 50},
+            {field:'comcontent',title:'评论内容',width: 50},
+            {field:'comdate',title:'创建时间',width: 50},
+            {field:'comcode',title:'点赞数量',width: 50},
+            {field:'courseid',title:'课程id',width: 50},
             {field:'act',title:'操作',width:100,
                 formatter: function(value,row,index){
-                    return '<a href="javascript:deletebaoming('+row.baouserid+')" class="btn btn-danger" role="button">删除</a><a href="javascript:updatebaoming('+row.baouserid+')" class="btn btn-warning" role="button">修改</a>';
-                }},
+                    return '<a href="javascript:deletecommon('+row.comcontent+')" class="btn btn-danger" role="button">删除</a>';
+                }
+            },
         ]
     })
 
     //删除
-    function deletebaoming(id){
+    function deletecommon(comcontent){
         BootstrapDialog.show({
             title:'',
-            message: "你确定要删除这条信息吗？",
+            message: "你确定要删除这条评论吗？",
             buttons: [{
                 label: '确定',
                 action: function() {
                     $.ajax({
-                        url:"<%=request.getContextPath()%>/baoming/deletebaoming?baouserid="+id,
+                        url:"<%=request.getContextPath()%>/comm/deletecommon?comcontent="+comcontent,
                         type:"post",
                         success:function(result){
+                            alert(result);
                             location.reload();
                         }
                     })
@@ -124,48 +107,22 @@
                 }
             }]
         })
-    }
-
-    //修改
-    function updatebaoming(id){
-        BootstrapDialog.show({
-            title: '修改信息',
-            message: $('<div></div>').load('<%=request.getContextPath()%>/baoming/selectid?baouserid='+id),
-            buttons: [{
-                label: '保存',
-                action: function() {
-                    $.ajax({
-                        url:"<%=request.getContextPath()%>/baoming/updatebaoming",
-                        type:"post",
-                        data:$("#updateForm").serialize(),
-                        success:function(result){
-                            location.reload();
-                        }
-                    })
-                }
-            },{
-                label: '取消',
-                action:function(result) {
-                    result.close();
-                }
-            }]
-        })
-
     }
 
     //添加
-    function insertbuser(){
+    function insertcomment(){
         BootstrapDialog.show({
-            title: '添加信息',
-            message: $('<div></div>').load('<%=request.getContextPath()%>/twl/addbaouser.jsp'),
+            title: '添加评论',
+            message: $('<div></div>').load('<%=request.getContextPath()%>/twl/addcomment.jsp'),
             buttons: [{
                 label: '添加',
                 action: function() {
                     $.ajax({
-                        url:"<%=request.getContextPath()%>/baoming/addbaoming",
+                        url:"<%=request.getContextPath()%>/comm/addComment",
                         type:"post",
-                        data:$("#addForm").serialize(),
+                        data:$("#addComForm").serialize(),
                         success:function(result){
+                            alert("添加成功!");
                             location.reload();
                         }
                     })
