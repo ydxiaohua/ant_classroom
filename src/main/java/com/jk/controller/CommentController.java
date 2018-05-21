@@ -40,14 +40,9 @@ public class CommentController {
     @ResponseBody
     @RequestMapping("deletecommon")
     public String deletecommon(String comcontent){
-
-
+        System.out.println(comcontent);
         Query q=new Query(new Criteria("comcontent").is(comcontent));
-
         mongoTemplate.remove(q,Comment.class);
-
-
-
         return "删除成功";
     }
 

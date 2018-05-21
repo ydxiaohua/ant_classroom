@@ -77,7 +77,7 @@
             {field:'courseid',title:'课程id',width: 50},
             {field:'act',title:'操作',width:100,
                 formatter: function(value,row,index){
-                    return '<a href="javascript:deletecommon('+row.comcontent+')" class="btn btn-danger" role="button">删除</a>';
+                    return "<a href='javascript:deletecommon(\""+row.comcontent+"\")' class='btn btn-danger' role='button'>删除</a>";
                 }
             },
         ]
