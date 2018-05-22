@@ -1,19 +1,24 @@
 package com.jk.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
 import java.io.Serializable;
 
-@Document(collection="pinglun")
+/**
+ * Created by wfyf.zx1520 on 2018/5/21.
+ */
 public class Comment implements Serializable {
-    private static final long serialVersionUID = 7306508843024901955L;
+    private static final long serialVersionUID = -8003500683852308690L;
+    /*comid	int
+    comcontent	varchar
+    comdate	varchar
+    comcode	int
+    courseid	int*/
 
-    private Integer comid;
-    private String comcontent;
-    private String comdate;
-    private Integer comcode;
-    private Integer courseid;
+    private Integer  comid;
+    private String   comcontent;
+    private String   comdate;
+    private Integer  comcode;
+    private Integer  courseid;
+
 
     public Integer getComid() {
         return comid;
@@ -55,14 +60,5 @@ public class Comment implements Serializable {
         this.courseid = courseid;
     }
 
-    @Override
-    public String toString() {
-        return "comment{" +
-                "comid=" + comid +
-                ", comcontent='" + comcontent + '\'' +
-                ", comdate='" + comdate + '\'' +
-                ", comcode=" + comcode +
-                ", courseid=" + courseid +
-                '}';
-    }
+
 }
