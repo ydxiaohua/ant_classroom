@@ -30,4 +30,5 @@ public interface CourseService {
     List<Course> querycourse();
     List<Class> queryclass();
     void addcourse(Course course);
+    void deletecourse(String courseid);
 }

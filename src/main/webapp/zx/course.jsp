@@ -170,7 +170,7 @@
 
             {field:'act',title:'操作',width:100,
                 formatter: function(value,row,index){
-                    return '<input type="button" value="删除" class="btn btn-success" onclick="deleteteacher('+row.teacherid+')"/><input type="button" value="修改" class="btn btn-success" onclick="updateteacher('+row.teacherid+')"/>';
+                    return '<input type="button" value="删除" class="btn btn-success" onclick="deletecourse('+row.courseid+')"/><input type="button" value="修改" class="btn btn-success" onclick="updatecourse('+row.courseid+')"/>';
                 }}
         ]
     })
@@ -230,6 +230,30 @@
             }
         })
     }
+    function deletecourse(courseid){
+
+        $.ajax({
+
+            type:"post",
+
+            url:"<%=request.getContextPath()%>/CourseController/deletecourse",
+
+            data:{"courseid":courseid},
+
+            success:function(result){
+
+
+
+                location.href=location
+
+            }
+
+        })
+
+    }
+
+
+
 
 
 </script>

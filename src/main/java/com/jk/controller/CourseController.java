@@ -15,14 +15,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
-/**
- * Created by wfyf.zx1520 on 2018/5/15.
- */
 @Controller
-@EnableAutoConfiguration
 @RequestMapping("/CourseController")
 public class CourseController {
-
 
    @Autowired
   CourseService  courseService;
@@ -187,6 +182,16 @@ public class CourseController {
 
         courseService.addcourse(course);
 
+    }
+    /*deletecourse*/
+    //删除大纲
+    @RequestMapping("/deletecourse")
+    @ResponseBody
+    public  String deletecourse(String courseid){
+
+        courseService.deletecourse(courseid);
+
+        return "deletesuccess";
     }
 
 
