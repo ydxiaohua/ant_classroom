@@ -1,3 +1,4 @@
+/*
 package com.jk.controller;
 
 import com.jk.model.Course;
@@ -97,7 +98,9 @@ public class CourseController {
 
 
 
-    /**/
+    */
+/**//*
+
 
     //新增大纲
     @RequestMapping("/adddagang")
@@ -119,7 +122,9 @@ public class CourseController {
         return "deletesuccess";
     }
 
-   /* */
+   */
+/* *//*
+
 
     //大纲回显
     @RequestMapping("/querydgid")
@@ -133,7 +138,9 @@ public class CourseController {
 
     }
 
-    /**/
+    */
+/**//*
+
 
 
     //修改大纲
@@ -183,7 +190,9 @@ public class CourseController {
         courseService.addcourse(course);
 
     }
-    /*deletecourse*/
+    */
+/*deletecourse*//*
+
     //删除大纲
     @RequestMapping("/deletecourse")
     @ResponseBody
@@ -196,12 +205,15 @@ public class CourseController {
 
 
 
-    /*@RequestMapping(value = "/addPicture", method = RequestMethod.POST, produces = "application/json;charset=utf8")
+    */
+/*@RequestMapping(value = "/addPicture", method = RequestMethod.POST, produces = "application/json;charset=utf8")
     @ResponseBody
     public  Object addPicture(@RequestParam("file") MultipartFile[] files){
         String greatBeauty = AliyunOSSClientUtil.GreatBeauty(files[0], files[0].getOriginalFilename());
         Map map = new HashMap(1);
         map.put("a",greatBeauty);
         return map;
-    }*/
+    }*//*
+
 }
+*/

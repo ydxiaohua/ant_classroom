@@ -1,3 +1,4 @@
+/*
 package com.jk.service;
 
 import com.jk.model.Class;
@@ -7,9 +8,11 @@ import com.jk.model.Teacher;
 
 import java.util.List;
 
+*/
 /**
  * Created by wfyf.zx1520 on 2018/5/15.
- */
+ *//*
+
 public interface CourseService {
     List<Teacher> queryteacher();
     void addTeacher(Teacher teacher);
@@ -32,3 +35,4 @@ public interface CourseService {
     void addcourse(Course course);
     void deletecourse(String courseid);
 }
+*/
