@@ -86,4 +86,17 @@ public class BaomingController {
         baomingService.deletevipuser(peopleid);
         return "删除成功";
     }
+
+
+
+    /*前台==============================================================*/
+
+
+
+    //新增用户
+    @RequestMapping(value="/addpeople")
+    @ResponseBody
+    public void addpeople(Registrationcentre registrationcentre){
+        baomingService.addpeople(registrationcentre);
+    }
 }
