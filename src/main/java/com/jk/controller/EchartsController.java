@@ -1,6 +1,8 @@
 package com.jk.controller;
 
 import com.jk.model.Liu;
+import com.jk.model.People;
+import com.jk.model.Xia;
 import com.jk.service.EchartsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -145,5 +148,78 @@ public class EchartsController {
         System.out.println(map);
         System.out.println(liu);
         return map;
+    }
+    @ResponseBody
+    @RequestMapping("chaxxiaxia")
+    public  Map<String , Object>  chaxxiaxia(){
+        Map<String , Object> map=new HashMap<String, Object>();
+        List<Xia> liu=echartsService.chaxxiaxia();
+        Integer  ind=liu.size();
+        String[]    setarr=new   String[ind];
+        Integer[]   intarr=new   Integer[ind];
+        for(int i=0;i<liu.size();i++){
+            Xia x=liu.get(i);
+            String  a=x.getXiadata();
+            System.out.println(a);
+            setarr[i]=a;
+            Integer  b=x.getShulian();
+            intarr[i]=b;
+        }
+        map.put("succ", true);
+        map.put("leg", "['下载量']");
+        map.put("xax", setarr);
+        map.put("ser", intarr);
+        return   map;
+    }
+    @ResponseBody
+    @RequestMapping("zhexianxia")
+    public  Map<String , Object>  zhexianxia(String  name){
+        Map<String , Object> map=new HashMap<String, Object>();
+        List<Xia> liu=echartsService.zhexianxia(name);
+        Integer  ind=liu.size();
+        String[]    setarr=new   String[ind];
+        Integer[]   intarr=new   Integer[ind];
+        for (int i = 0; i < liu.size(); i++) {
+            Xia x=liu.get(i);
+            String  a=x.getXiadata();
+            setarr[i]=a;
+            Integer  b=x.getShulian();
+            intarr[i]=b;
+        }
+        map.put("succ", true);
+        map.put("leg", "['下载量']");
+        map.put("xax", setarr);
+        map.put("ser", intarr);
+        return map;
+    }
+    @ResponseBody
+    @RequestMapping("querylogin")
+    public  String  querylogin(String  username, String userpass, HttpSession session){
+
+        Map<String, Object>    longin=echartsService.querylogin(username,userpass);
+        String mas = (String) longin.get("login");
+        if("success".equals(mas)){
+            People user = (People) longin.get("user");
+            session.setAttribute("pid",user.getPeopleid());
+        }
+        return   mas;
+    }
+    @ResponseBody
+    @RequestMapping("queryadd")
+    public  void  querylogin( HttpSession session){
+
+        System.out.println(session.getAttribute("pid"));
+    }
+    @ResponseBody
+    @RequestMapping("register")
+    public  String  register(String  username, String password,String phoe, HttpSession session){
+
+        Map<String, Object>    longin=echartsService.register(username,password,phoe);
+        String mas = (String) longin.get("login");
+        if("success".equals(mas)){
+            People user = (People) longin.get("user");
+            session.setAttribute("pid",user.getPeopleid());
+        }
+        return   mas;
     }
 }
