@@ -15,7 +15,7 @@
             <td>创建时间</td>
             <td>
                 <div class="form-group">
-                    <a class='input-group date' id='datetimepicker2' >
+                    <a class='input-group date' id='datetimepicker0' >
                         <input onclick="Datetime()" type='text' name="comdate" class="form-control" id='nowdate1' style="width: 150px; height: 30px;" />
                         <span class="input-group-addon" style="float: left; width: 50px; height: 30px;">
                             <span class="glyphicon glyphicon-calendar"></span>
@@ -32,13 +32,17 @@
             <td>课程id</td>
             <td><input type="text" name="courseid"/></td>
         </tr>
+        <tr>
+            <td>评论人id</td>
+            <td><input type="text" name="peopleid"/></td>
+        </tr>
     </table>
 </form>
 
 <script type="text/javascript">
     //时间
     function Datetime() {
-        $('#datetimepicker2').datetimepicker({
+        $('#datetimepicker0').datetimepicker({
             language: 'zh-CN',//显示中文
             format: 'yyyy-mm-dd',//显示格式
             minView: "month",//设置只显示到月份
