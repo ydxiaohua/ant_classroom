@@ -99,4 +99,13 @@ public class BaomingController {
     public void addpeople(Registrationcentre registrationcentre){
         baomingService.addpeople(registrationcentre);
     }
+
+
+    //充值VIP
+    @RequestMapping(value="/updateVIP")
+    @ResponseBody
+    public void updateVIP(Integer peopleid){
+        baomingService.updateVIP(peopleid);
+    }
+
 }
