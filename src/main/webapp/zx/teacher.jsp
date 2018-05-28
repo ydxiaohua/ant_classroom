@@ -73,6 +73,18 @@
             {field:'teacherid',title:'id',width: 100},
             {field:'teachername',title:'讲师姓名',width: 100},
             {field:'teacherdate',title:'创建日期',width: 100},
+            {field:'teacherstate',title:'审核状态',width: 100,
+                formatter: function(value,row,index){
+                    if(value == 1){
+                        return"待审核";
+                    }else if(value==2){
+                        return"通过";
+                    }else if(value==3){
+                        return "未通过";
+
+                    }
+
+                }},
 
 
             {field:'act',title:'操作',width:100,

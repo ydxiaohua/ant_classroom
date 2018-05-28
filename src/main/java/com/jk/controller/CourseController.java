@@ -1,11 +1,10 @@
 package com.jk.controller;
 
-import com.jk.model.Course;
-import com.jk.model.DaGang;
-import com.jk.model.Teacher;
+import com.jk.model.*;
 import com.jk.model.Class;
 import com.jk.service.CourseService;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -13,7 +12,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.mail.*;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
 import java.util.List;
+import java.util.Properties;
+import java.util.UUID;
+
 
 @Controller
 @RequestMapping("/CourseController")
@@ -21,6 +28,9 @@ public class CourseController {
 
    @Autowired
   CourseService  courseService;
+
+    @Autowired
+    private AmqpTemplate amqpTemplate;
 
     @Autowired
     private MongoTemplate mongoTemplate;
@@ -40,6 +50,7 @@ public class CourseController {
     @ResponseBody
     public  String addTeacher(Teacher teacher){
 
+        teacher.setTeacherstate(1);
         courseService.addTeacher(teacher);
 
         return "addsuccess";
@@ -64,7 +75,7 @@ public class CourseController {
 
         request.getSession().setAttribute("list",list);
 
-        return  "updatecourse.jsp";
+        return  "/zx/updatecourse.jsp";
 
     }
 
@@ -129,7 +140,7 @@ public class CourseController {
 
         request.getSession().setAttribute("list",list);
 
-        return  "updatedagang.jsp";
+        return  "/zx/updatedagang.jsp";
 
     }
 
@@ -195,6 +206,112 @@ public class CourseController {
     }
 
 
+    /*courseid*/
+
+    @RequestMapping("/querycourseid")
+    public  String   querycourseid(String courseid,HttpServletRequest request){
+
+        Course  list = courseService.querycourseid(courseid);
+        List<Teacher> teacher= courseService.queryteacher();
+        List<Class> clas= courseService.queryclass();
+        request.getSession().setAttribute("list",list);
+        request.getSession().setAttribute("teacher",teacher);
+        request.getSession().setAttribute("clas",clas);
+
+        return  "/zx/updatecourseAll.jsp";
+
+    }
+   /* */
+   @RequestMapping("/updatecourse")
+   @ResponseBody
+   public  String updatecourse(Course course){
+
+       courseService.updatecourse(course);
+
+       return "1";
+   }
+    /*queryvideo*/
+
+    @RequestMapping(value = "/queryvideo")
+    @ResponseBody
+    public List<Video> queryvideo() {
+
+        List<Video> list= courseService.queryvideo();
+
+        return list;
+    }
+
+
+
+
+
+   /* queryshenhe*/
+
+    @RequestMapping(value = "/queryshenhe")
+    @ResponseBody
+    public List<Teacher> queryshenhe() {
+
+        List<Teacher> list= courseService.queryshenhe();
+
+        return list;
+    }
+
+    /*updatetongguo*/
+
+    @RequestMapping("/updatetongguo")
+    @ResponseBody
+    public  String updatetongguo(String teacherid) throws MessagingException {
+
+            courseService.updatetongguo(teacherid);
+
+          List<Teacher> list= courseService.queryshenheteacherid(teacherid);
+
+              amqpTemplate.convertAndSend("xx",list.get(0).getTeachernote());
+              String youxian=list.get(0).getTeachernote();
+              System.out.println(list.get(0).getTeachernote());
+              String from = "hhhrongcheng@163.com";
+
+              Properties prop = new Properties();
+              prop.setProperty("mail.host", "smtp.163.com");
+              prop.setProperty("mail.smtp.auth", "true");
+              Authenticator auth = new Authenticator() {
+                  protected PasswordAuthentication getPasswordAuthentication() {
+
+                      return  new PasswordAuthentication("hhhrongcheng@163.com","2528737260rong");
+                  }
+              };
+              Session session = Session.getInstance(prop, auth);
+              MimeMessage msg = new MimeMessage(session);
+              msg.setFrom(new InternetAddress(from));
+              //如abc@163.com
+              msg.addRecipients(Message.RecipientType.CC, InternetAddress.parse(from));//发送的内容给自己也发一封
+              msg.addRecipients(Message.RecipientType.TO, InternetAddress.parse(youxian));
+
+              msg.setSubject("通知邮件");
+              msg.setContent("审批成功", "text/html;charset=utf-8");
+              Transport.send(msg);
+
+
+
+
+
+          return "deletesuccess";
+    }
+
+
+
+
+   /* */
+
+    //新增视频
+    @RequestMapping("/addvideo")
+    @ResponseBody
+    public  String addvideo(Video video){
+        video.setUserid(1);
+        courseService.addvideo(video);
+
+        return "addsuccess";
+    }
 
     /*@RequestMapping(value = "/addPicture", method = RequestMethod.POST, produces = "application/json;charset=utf8")
     @ResponseBody

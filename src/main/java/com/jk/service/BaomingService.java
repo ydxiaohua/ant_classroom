@@ -1,3 +1,4 @@
+/*
 package com.jk.service;
 
 import com.jk.model.People;
@@ -22,3 +23,4 @@ public interface BaomingService {
 
     List<People> queryvipuserlist(Integer phone, String peoplenickname,Integer minage,Integer maxage);
 }
+*/

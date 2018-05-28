@@ -6,23 +6,20 @@
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://code.alibabatech.com/schema/dubbo
     http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
-    <!-- 提供方应用信息，用于计算依赖关系 -->
-    <dubbo:application name="dubbo-service-consumer" />
-    <!-- 使用multicast广播注册中心暴露服务地址 -->
-    <!-- <dubbo:registry address="multicast://224.5.6.7:1234" /> -->
-    <!-- 使用zookeeper注册中心暴露服务地址 -->
-    <dubbo:registry address="zookeeper://192.168.1.117:2181"/>
+<!-- 提供方应用信息，用于计算依赖关系 -->
+<dubbo:application name="dubbo-service-consumer" />
+<!-- 使用multicast广播注册中心暴露服务地址 -->
+<!-- <dubbo:registry address="multicast://224.5.6.7:1234" /> -->
+<!-- 使用zookeeper注册中心暴露服务地址 -->
+<dubbo:registry address="zookeeper://192.168.1.171:2181" />
 
     <!-- 声明需要暴露的服务接口 -->
-    <!--<dubbo:reference id="myService" interface="com.jk.service.UserService"/>-->
 
-    <!-- 声明需要暴露的服务接口 -->
-    <dubbo:reference id="twoService" interface="com.jk.service.UserService"  timeout="1200000"/>
-    <dubbo:reference id="twlmyService" interface="com.jk.service.BaomingService" timeout="1000000"/>
-    <dubbo:reference id="mytowService" interface="com.jk.service.CourseService"/>
-    <!-- 声明需要暴露的服务接口 -->
-   <!-- <dubbo:reference id="twlmyService" interface="com.jk.service.BaomingService"/>-->
+       <!-- <dubbo:reference id="twoService" interface="com.jk.service.UserService"  timeout="1200000"/>
 
-
+    <dubbo:reference id="twlmyService" interface="com.jk.service.BaomingService" timeout="1000000"/>-->
+    <dubbo:reference id="zhangxing" interface="com.jk.service.CourseService" timeout="1200000"/>
+<!--    <dubbo:reference id="testService" interface="com.jk.service.TestService" timeout="1200000"/>
+    <dubbo:reference id="echartsService" interface="com.jk.service.EchartsService" timeout="1200000"/>-->
 
 </beans>

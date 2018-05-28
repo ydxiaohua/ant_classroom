@@ -1,9 +1,7 @@
 package com.jk.service;
 
+import com.jk.model.*;
 import com.jk.model.Class;
-import com.jk.model.Course;
-import com.jk.model.DaGang;
-import com.jk.model.Teacher;
 
 import java.util.List;
 
@@ -31,4 +29,15 @@ public interface CourseService {
     List<Class> queryclass();
     void addcourse(Course course);
     void deletecourse(String courseid);
+    Course querycourseid(String courseid);
+    void updatecourse(Course course);
+
+
+
+    List<Video> queryvideo();
+    List<Teacher> queryshenhe();
+    void updatetongguo(String teacherid);
+    List<Teacher> queryshenheteacherid(String teacherid);
+
+    void addvideo(Video video);
 }

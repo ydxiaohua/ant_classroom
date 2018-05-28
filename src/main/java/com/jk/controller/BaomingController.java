@@ -1,3 +1,4 @@
+/*
 package com.jk.controller;
 
 import com.jk.model.People;
@@ -87,3 +88,4 @@ public class BaomingController {
         return "删除成功";
     }
 }
+*/

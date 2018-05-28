@@ -1,3 +1,4 @@
+/*
 package com.jk.service;
 
 import com.jk.model.Quan;
@@ -14,3 +15,4 @@ public interface UserService {
 
     List<Quan> queryTree(Integer userid);
 }
+*/

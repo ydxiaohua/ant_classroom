@@ -89,7 +89,7 @@
                         </tr>
 
 
-                            <input type="hidden" value="0" name="ynjingpin">
+                        <input type="hidden" value="0" name="ynjingpin">
 
 
                     </table>
@@ -170,7 +170,7 @@
 
             {field:'act',title:'操作',width:100,
                 formatter: function(value,row,index){
-                    return '<input type="button" value="删除" class="btn btn-success" onclick="deletecourse('+row.courseid+')"/><input type="button" value="修改" class="btn btn-success" onclick="updatecourse('+row.courseid+')"/>';
+                    return '<input type="button" value="删除" class="btn btn-success" onclick="deletecourse('+row.courseid+')"/><input type="button" value="修改" class="btn btn-success" onclick="updatecourses('+row.courseid+')"/>';
                 }}
         ]
     })
@@ -254,6 +254,34 @@
 
 
 
+    function updatecourses(courseid){
+
+        BootstrapDialog.show({
+            title : "修改的方法",       //title
+            message :$('<div></div>').load("<%=request.getContextPath()%>/CourseController/querycourseid?courseid="+courseid),
+            buttons : [{
+                label : "修改",
+                action : function(dialog){
+                    $.ajax({
+                        url : "<%=request.getContextPath()%>/CourseController/updatecourse",
+                        type : "post",
+                        data : $("#update-course-all").serialize(),
+                        dataType:"json",
+                        success : function(flag){
+                            if(flag == 1){
+                                location.reload();
+                            }
+                        }
+                    })
+                }
+            },{
+                label : "取消",
+                action : function(dialog){
+                    dialog.close();
+                }
+            }]
+        })
+    }
 
 
 </script>

@@ -1,3 +1,4 @@
+/*
 package com.jk.controller;
 
 
@@ -25,9 +26,12 @@ public class UserController {
   //  @Autowired
    // private MongoTemplate mongoTemplate;
 
-    /**
-     * 开启多线程
-     */
+*/
+/**
+     * 开启多线程*//*
+
+
+
     public static ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
 
     @Autowired
@@ -48,7 +52,10 @@ public class UserController {
 
 
 
-    /*用户登录*/
+*/
+/*用户登录*//*
+
+
     @RequestMapping("/loginuser")
     @ResponseBody
     public String loginuser(User user,HttpSession session){
@@ -70,7 +77,10 @@ public class UserController {
         return (String) map.get("flag");
     }
 
-    /*查询权限*/
+*/
+/*查询权限*//*
+
+
     @RequestMapping("/queryTree")
     @ResponseBody
     public List<Quan> queryTree(HttpSession session){
@@ -84,3 +94,4 @@ public class UserController {
 
 
 }
+*/
