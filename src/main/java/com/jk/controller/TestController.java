@@ -11,9 +11,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
-/**
- * Created by Administrator on 2018/5/10.
- */
+
+
 @Controller
 @EnableAutoConfiguration
 @RequestMapping("/user")

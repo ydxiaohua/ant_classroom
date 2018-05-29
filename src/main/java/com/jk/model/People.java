@@ -4,26 +4,20 @@ import org.springframework.data.annotation.Id;
 
 import java.io.Serializable;
 
-/**
- * Created by ASUS on 2018/5/16.
- */
 public class People implements Serializable {
-    private static final long serialVersionUID = 7306508843024901955L;
 
+    private static final long serialVersionUID = 6286034585767231268L;
     @Id
-    private Integer peopleid;
-    private String email;
-    private String phone;
-    private String peoplepass;
-    private Integer ynvip;
-    private String vipendtime;
-    private String peoplename;
-    private String peoplenickname;
-    private Integer peoplesex;
-    private Integer peopleage;
-
-    private Integer minage;
-    private Integer maxage;
+    private   Integer  peopleid;
+    private   String   email;
+    private   String   phone;
+    private   String   peoplepass;
+    private   Integer  ynvip;
+    private   String   vipenddate;
+    private   String   peoplename;
+    private   String   peoplenickname;
+    private   Integer  peoplesex;
+    private   Integer  peopleage;
 
     public Integer getPeopleid() {
         return peopleid;
@@ -65,12 +59,12 @@ public class People implements Serializable {
         this.ynvip = ynvip;
     }
 
-    public String getVipendtime() {
-        return vipendtime;
+    public String getVipenddate() {
+        return vipenddate;
     }
 
-    public void setVipendtime(String vipendtime) {
-        this.vipendtime = vipendtime;
+    public void setVipenddate(String vipenddate) {
+        this.vipenddate = vipenddate;
     }
 
     public String getPeoplename() {
@@ -105,31 +99,15 @@ public class People implements Serializable {
         this.peopleage = peopleage;
     }
 
-    public Integer getMinage() {
-        return minage;
-    }
-
-    public void setMinage(Integer minage) {
-        this.minage = minage;
-    }
-
-    public Integer getMaxage() {
-        return maxage;
-    }
-
-    public void setMaxage(Integer maxage) {
-        this.maxage = maxage;
-    }
-
     @Override
     public String toString() {
         return "People{" +
                 "peopleid=" + peopleid +
                 ", email='" + email + '\'' +
-                ", phone=" + phone +
+                ", phone='" + phone + '\'' +
                 ", peoplepass='" + peoplepass + '\'' +
                 ", ynvip=" + ynvip +
-                ", vipendtime='" + vipendtime + '\'' +
+                ", vipenddate='" + vipenddate + '\'' +
                 ", peoplename='" + peoplename + '\'' +
                 ", peoplenickname='" + peoplenickname + '\'' +
                 ", peoplesex=" + peoplesex +

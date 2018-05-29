@@ -11,6 +11,7 @@ import java.io.Serializable;
 public class Share  implements Serializable{
 
     private static final long serialVersionUID = 1551688508284892336L;
+
     private  Integer  shareid;
 
     private  Integer userid;

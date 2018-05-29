@@ -7,7 +7,6 @@ import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication
 @ImportResource(value = {"classpath:dubbo-consumer.xml"})
-@MapperScan("com.jk.dao")
 public class AntClassroomApplication {
 
 	public static void main(String[] args) {

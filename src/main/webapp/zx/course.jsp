@@ -110,7 +110,7 @@
 <table class="table" id="course" border="1"></table>
 
 
-<script>
+<script type="text/javascript">
 
 
 
@@ -257,6 +257,7 @@
 
 
 </script>
+
 <script type="text/javascript">
     $('#file-pic2').fileinput({//初始化上传文件框
         showUpload : true,	//是否显示上传按钮

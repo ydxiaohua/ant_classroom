@@ -6,9 +6,8 @@ import com.jk.model.Xia;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by Administrator on 2018/5/17.
- */
+
+
 public interface EchartsService {
 
 

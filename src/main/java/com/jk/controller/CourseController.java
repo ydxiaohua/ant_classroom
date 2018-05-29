@@ -1,9 +1,7 @@
-/*
+
 package com.jk.controller;
 
-import com.jk.model.Course;
-import com.jk.model.DaGang;
-import com.jk.model.Teacher;
+import com.jk.model.*;
 import com.jk.model.Class;
 import com.jk.service.CourseService;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
@@ -12,9 +10,14 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/CourseController")
@@ -98,8 +101,8 @@ public class CourseController {
 
 
 
-    */
-/**//*
+
+
 
 
     //新增大纲
@@ -122,8 +125,8 @@ public class CourseController {
         return "deletesuccess";
     }
 
-   */
-/* *//*
+
+
 
 
     //大纲回显
@@ -138,8 +141,7 @@ public class CourseController {
 
     }
 
-    */
-/**//*
+
 
 
 
@@ -182,7 +184,7 @@ public class CourseController {
 
     }
 
-//新增课程表
+    //新增课程表
     @RequestMapping("/addcourse")
     @ResponseBody
     public  void addcourse(Course  course){
@@ -190,8 +192,7 @@ public class CourseController {
         courseService.addcourse(course);
 
     }
-    */
-/*deletecourse*//*
+
 
     //删除大纲
     @RequestMapping("/deletecourse")
@@ -205,15 +206,15 @@ public class CourseController {
 
 
 
-    */
-/*@RequestMapping(value = "/addPicture", method = RequestMethod.POST, produces = "application/json;charset=utf8")
+
+    @RequestMapping(value = "/addPicture", method = RequestMethod.POST, produces = "application/json;charset=utf8")
     @ResponseBody
     public  Object addPicture(@RequestParam("file") MultipartFile[] files){
         String greatBeauty = AliyunOSSClientUtil.GreatBeauty(files[0], files[0].getOriginalFilename());
         Map map = new HashMap(1);
         map.put("a",greatBeauty);
         return map;
-    }*//*
+    }
+
 
 }
-*/

@@ -1075,21 +1075,39 @@
   *
   */
  function dialogLogin(type) {
-     var userName = $("[name='username']").val();
+
+     var userName = $("[name='yyouxiang']").val();
+
+     alert(userName)
+
      var pwd = $("[name='ypass']").val();
+
+
      $.ajax({
+
          url:"../raaac/querylogin",
+
          type:"post",
+
          data:{ "username":userName, "userpass":pwd},
+
          dataType:"text",
+
          success:function(flag){
-             // alert(flag)
+
+             alert(flag)
+
              if(flag=="success"){
+
                  //alert("成功")
                  location.href="e-chu.jsp";
+
              }else if(flag=="erroruserpas"){
+
                  alert("账号或密码错误");
+
              }else if(flag=="error"){
+
                  alert("账号不存在")
              }
          },
@@ -1103,7 +1121,8 @@
   * 注册新用户
   */
  function dialogRegister(regType) {
-     $(".e-l-jy").html('');
+
+    $(".e-l-jy").html('');
      var emailVal = $("#yyouxiang").val();
      if (emailVal == "") {// 验证邮箱是否为空
          $("#yyouxiang")
@@ -1177,11 +1196,7 @@
      }
      $.ajax({
          url :"../raaac/register",
-         data : {
-             "username" : $("#yyouxiang").val(),
-             "password" : $("#ypass").val(),
-             "phoe" : $("#yphoe").val()
-         },
+         data : {"username" : $("#yyouxiang").val(),"password" : $("#ypass").val(),"phoe" : $("#yphone").val()},
          type : "post",
          dataType : "text",
          cache : false,

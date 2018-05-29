@@ -60,25 +60,27 @@ public class LogAspect {
 
         // 记录下请求内容
         url= request.getRequestURL().toString();
+/*
 
         System.out.println("URL : " + request.getRequestURL().toString());
         System.out.println("HTTP_METHOD : " + request.getMethod());
         System.out.println("IP : " + request.getRemoteAddr());
         System.out.println("CLASS_METHOD : " + joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName());
         System.out.println("ARGS : " + Arrays.toString(joinPoint.getArgs()));;
+*/
 
 
         User user2=(User)request.getSession().getAttribute("user");
 
 
-        System.err.println("user"+user2);
+      /*  System.err.println("user"+user2);*/
 
         use.setZtid(Arrays.toString(joinPoint.getArgs()));
 
 
         String aaa = use.getZtid();
 
-        System.err.println("aaa"+aaa);
+    /*    System.err.println("aaa"+aaa);*/
 
         if(request.getSession().getAttribute("user")!=null){
 
@@ -100,7 +102,7 @@ public class LogAspect {
        // System.err.println(request.getSession().getServletContext().getRealPath("/"));
 
        String servletPath=request.getServletPath();
-        System.err.println(servletPath);
+ /*       System.err.println(servletPath);*/
 
        User u= (User) request.getSession().getAttribute("user");
 
@@ -134,15 +136,15 @@ public class LogAspect {
     @AfterThrowing("webLog()")
     public void throwss(JoinPoint jp){
 
-        System.err.println(jp);
+/*        System.err.println(jp);
 
-        System.out.println("方法异常时执行.....");
+        System.out.println("方法异常时执行.....");*/
 
         Error err = new Error();
 
         HttpServletRequest request= ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
 
-        err.setErrorvalue(jp.toString());
+ /*       err.setErrorvalue(jp.toString());*/
 
         mongoTemplate.save(err);
 

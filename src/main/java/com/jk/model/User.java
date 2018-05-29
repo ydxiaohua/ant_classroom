@@ -1,26 +1,31 @@
 package com.jk.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
-
 import java.io.Serializable;
 
-@Document(collection = "UserLo")
+
+/**
+ *
+ */
 public class User implements Serializable{
 
-    private static final long serialVersionUID = -7567065163375619856L;
-    @Id
+
+    private static final long serialVersionUID = -2041355668909509945L;
+
     private   Integer  userid;
 
     private   String   username;
 
+    private   String   usertime;
+
+    private   String   userage;
+
+    private   String   usersex;
+
     private   String   userpass;
 
-    private   String   ztid;
+    private String ztid;
 
-   public static long getSerialVersionUID() {
-       return serialVersionUID;
-    }
+
 
     public Integer getUserid() {
         return userid;
@@ -30,12 +35,36 @@ public class User implements Serializable{
         this.userid = userid;
     }
 
+    public String getUsertime() {
+        return usertime;
+    }
+
+    public void setUsertime(String usertime) {
+        this.usertime = usertime;
+    }
+
     public String getUsername() {
         return username;
     }
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getUserage() {
+        return userage;
+    }
+
+    public void setUserage(String userage) {
+        this.userage = userage;
+    }
+
+    public String getUsersex() {
+        return usersex;
+    }
+
+    public void setUsersex(String usersex) {
+        this.usersex = usersex;
     }
 
     public String getUserpass() {
@@ -54,14 +83,19 @@ public class User implements Serializable{
         this.ztid = ztid;
     }
 
-
     @Override
     public String toString() {
         return "User{" +
                 "userid=" + userid +
                 ", username='" + username + '\'' +
+                ", usertime='" + usertime + '\'' +
+                ", userage='" + userage + '\'' +
+                ", usersex='" + usersex + '\'' +
                 ", userpass='" + userpass + '\'' +
-                ", ztid='" + ztid + '\'' +
+                ", ztid=" + ztid +
                 '}';
     }
 }
+
+
+

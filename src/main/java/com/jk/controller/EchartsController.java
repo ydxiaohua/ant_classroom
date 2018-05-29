@@ -22,9 +22,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by Administrator on 2018/5/17.
- */
 
 @Controller
 @RequestMapping("raaac")
@@ -80,10 +77,7 @@ public class EchartsController {
             liu.setType(0);
             mongoTemplate.save(liu);
     }
-    /**
-     * @return
-     * mongodb 查询数据到mysql中
-     */
+
     @Scheduled(cron ="0 0 3 * * ?")
     public   void   mongodblist(){
         Liu liu  =new Liu();
@@ -100,10 +94,11 @@ public class EchartsController {
         Update update = new Update().set("type",1);
         mongoTemplate.updateFirst(query2,update,Liu.class);
     }
-/*    @Scheduled(fixedRate = 6000)
+    @Scheduled(fixedRate = 6000)
     public void autosync() {
         System.out.print(".");
-    }*/
+    }
+
     @ResponseBody
     @RequestMapping("chaxxia")
     public  Map<String , Object>  chaxliu(){

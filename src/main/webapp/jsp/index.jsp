@@ -34,8 +34,8 @@
               <!-- sidebar menu start-->
               <ul class="sidebar-menu" id="nav-accordion">
               		
-              	  <h5 class="centered"><span style="color:#66FF33">欢迎&nbsp;&nbsp;&nbsp;<b>${dbuser.username}</b>&nbsp;&nbsp;登陆后台管理系统</span></h5>
-                  	    <div>
+              	  <h5 class="centered"><span style="color:#66FF33">欢迎&nbsp;&nbsp;&nbsp;<b>${username}</b>&nbsp;&nbsp;登陆后台管理系统</span></h5>
+                  	    <div >
 	    	              <div id="tree" style="color:#0033FF"></div>
 	                    </div>        
               </ul>
@@ -117,14 +117,11 @@
     function getTree() {
     	var data="";
     	        $.ajax({
-    	            url:"user/queryMenu",
+    	            url:"<%=request.getContextPath()%>/kcmuser/queryTree",
     	            type:"post",
     	            dataType:"json",
     	            async:false,
     	            success:function(reslut){
-                        if(reslut==null){
-                            location.hr
-                        }
     	                data = reslut;
     	            },
     	        });
@@ -155,7 +152,7 @@
     			  if(data.url == "/login.jsp"){
   					location.href="<%=request.getContextPath()%>/login.jsp"
   				}else if(data.url!=null&&data.url!=''){
-  					 $('#mainFrameTabs1').bTabsAdd(data.id,data.text,data.url);
+  					 $('#mainFrameTabs1').bTabsAdd(data.quanid,data.text,url); 
   				}
     			
     		}
@@ -173,5 +170,6 @@
   
 
 </script>
+
 </body>
 </html>

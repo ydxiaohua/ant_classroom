@@ -13,7 +13,7 @@
     <link rel="<%=request.getContextPath()%>/stylesheet" type="text/css" href="assets/js/gritter/css/jquery.gritter.css" />
     <link rel="<%=request.getContextPath()%>/stylesheet" type="text/css" href="assets/lineicons/style.css">    
     <link href="<%=request.getContextPath()%>/assets/css/style.css" rel="stylesheet">
-    <link href="<%=request.getContextPath()%>/bootstrap/bootstrap-table/dist/bootstrap-table.css" rel="stylesheet">
+    <link href="<%=request.getContextPath()%>/js/bootstrap-table/dist/bootstrap-table.css" rel="stylesheet">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap/bootstrap-treeview/dist/bootstrap-treeview.min.css" type="text/css"/>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/bootstrap/bTabs-master/b.tabs.css" type="text/css"/>
 
@@ -33,8 +33,8 @@
 	<script src="<%=request.getContextPath()%>/assets/js/chart-master/Chart.js"></script>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <script src="<%=request.getContextPath()%>/bootstrap/bootstrap-table/dist/bootstrap-table.js"></script>
-    <script src="<%=request.getContextPath()%>/bootstrap/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="<%=request.getContextPath()%>/js/bootstrap-table/dist/bootstrap-table.js"></script>
+    <script src="<%=request.getContextPath()%>/js/bootstrap-table/dist/locale/bootstrap-table-zh-CN.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/bootstrap/bTabs-master/b.tabs.min.js"></script>
 
 </body>
