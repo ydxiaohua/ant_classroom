@@ -2,8 +2,10 @@ package com.jk.controller;
 
 import com.jk.model.Liu;
 import com.jk.model.People;
+import com.jk.model.UpLoadUtil;
 import com.jk.model.Xia;
 import com.jk.service.EchartsService;
+import org.aspectj.util.FileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
@@ -13,9 +15,13 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -194,15 +200,21 @@ public class EchartsController {
     }
     @ResponseBody
     @RequestMapping("querylogin")
-    public  String  querylogin(String  username, String userpass, HttpSession session){
+    public  Map<String, Object>  querylogin(String  username, String userpass, HttpSession session){
 
         Map<String, Object>    longin=echartsService.querylogin(username,userpass);
+        Map<String, Object> map = new HashMap<String, Object>();
+
         String mas = (String) longin.get("login");
+        String  admin="";
         if("success".equals(mas)){
             People user = (People) longin.get("user");
             session.setAttribute("pid",user.getPeopleid());
+            admin =user.getPhone();
         }
-        return   mas;
+        map.put("mas",mas);
+        map.put("admin",admin);
+        return   map;
     }
     @ResponseBody
     @RequestMapping("queryadd")
@@ -221,5 +233,35 @@ public class EchartsController {
             session.setAttribute("pid",user.getPeopleid());
         }
         return   mas;
+    }
+    @ResponseBody
+    @RequestMapping("listuser")
+    public List<People> listuser(Integer  userid){
+
+        List<People>   people=echartsService.listuser(userid);
+        return  people;
+    }
+    @ResponseBody
+    @RequestMapping("uolistuser")
+    public String uolistuser(Integer  peopleid,String  peoplenickname,Integer  peoplesex,Integer   peopleage){
+
+        String listid=echartsService.uolistuser(peopleid,peoplenickname,peoplesex,peopleage);
+        return  listid;
+    }
+    @ResponseBody
+    @RequestMapping("upuserpass")
+    public String upuserpass(String   peoplepass ,Integer  peopleid){
+         //修改密码
+        echartsService.upuserpass(peoplepass,peopleid);
+        return  "ok";
+    }
+    //上传图片（页面addEmpl.jsp）
+    @RequestMapping("upImg")
+    @ResponseBody
+    public String upImg(MultipartFile artImg, HttpServletRequest req){
+        String folderPath = req.getSession().getServletContext().getRealPath("/");
+        String folderName = "/upload/";
+        String str = UpLoadUtil.uploadImg(artImg, folderPath,folderName);
+        return  str;
     }
 }

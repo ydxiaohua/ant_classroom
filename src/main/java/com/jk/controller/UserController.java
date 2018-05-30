@@ -2,7 +2,6 @@ package com.jk.controller;
 
 
 import com.jk.model.Menu;
-import com.jk.model.Registrationcentre;
 import com.jk.model.Role;
 import com.jk.model.User;
 import com.jk.service.UserService;
