@@ -80,7 +80,16 @@
                     </select>
                 </blockquote>
                 <blockquote>
-                    毕业时间：<input class="span12" type="text" name="baousergraduatedate"  placeholder="毕业时间" />
+                    毕业时间:<div class="form-group">
+                        <a class='input-group date' id='datetimepicker1' >
+                            <input onclick="Datetime()" type='text' name="baousergraduatedate" class="form-control" id='nowdate' style="width: 250px; height: 30px;" />
+                             <span class="input-group-addon" style="float: left; width: 50px; height: 30px;">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </a>
+                    </div>
+
+
                 </blockquote>
                 <blockquote>
                     当前薪资：<input class="span12" type="text" name="presentpay"  placeholder="当前薪资" />
@@ -141,6 +150,27 @@
                 location.reload();
             }
         })
+    }
+
+    //时间
+    function Datetime() {
+        $('#datetimepicker1').datetimepicker({
+            language: 'zh-CN',//显示中文
+            format: 'yyyy-mm-dd',//显示格式
+            minView: "month",//设置只显示到月份
+            initialDate: new Date(),
+            autoclose: true,//选中自动关闭
+            todayBtn: true,//显示今日按钮
+        });
+        //默认获取当前日期
+        var today = new Date();
+        var nowdate = (today.getFullYear()) + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+        //对日期格式进行处理
+        var date = new Date(nowdate);
+        var mon = date.getMonth() + 1;
+        var day = date.getDate();
+        var mydate = date.getFullYear() + "-" + (mon < 10 ? "0" + mon : mon) + "-" + (day < 10 ? "0" + day : day);
+        document.getElementById("nowdate").value = mydate;
     }
 </script>
 </body>

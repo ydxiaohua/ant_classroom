@@ -18,6 +18,8 @@ public class User implements Serializable{
 
     private   String   ztid;
 
+    private String xinuserpass;
+
    public static long getSerialVersionUID() {
        return serialVersionUID;
     }
@@ -54,6 +56,13 @@ public class User implements Serializable{
         this.ztid = ztid;
     }
 
+    public String getXinuserpass() {
+        return xinuserpass;
+    }
+
+    public void setXinuserpass(String xinuserpass) {
+        this.xinuserpass = xinuserpass;
+    }
 
     @Override
     public String toString() {
@@ -62,6 +71,7 @@ public class User implements Serializable{
                 ", username='" + username + '\'' +
                 ", userpass='" + userpass + '\'' +
                 ", ztid='" + ztid + '\'' +
+                ", xinuserpass='" + xinuserpass + '\'' +
                 '}';
     }
 }
