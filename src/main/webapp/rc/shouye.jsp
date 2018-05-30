@@ -77,6 +77,7 @@
         });
     </script>
 </head>
+<input type="hidden" id="userid" value="${pid}"/>
 <body class="W-body">
 <div class="in-wrap">
 
@@ -128,12 +129,13 @@
                 </ul>
                 <!-- / nav -->
                 <ul class="h-r-login">
+                    <span id="dlzcqh">
                     <li class="undis" id="no-login"><a href="javascript:lrFun()"
                                                        title="登录"> <em class="icon18 login-icon">&nbsp;</em><span
                             class="vam ml5">登录</span>
                     </a> | <a href="javascript:lrFun(2)" title="注册"> </em><span
                             class="vam ml5">注册</span>
-                    </a></li>
+                    </a></li></span>
                     <li class="mr10 undis" id="is-login-one"><a
                             href="http://www.itmayiedu.com/uc/letter" title="消息" id="headerMsgCountId"> <em
                             class="icon18 news-icon">&nbsp;</em>
@@ -164,6 +166,7 @@
             <div class="clear"></div>
         </section>
     </header>
+
     <!-- /global header end-->
     <div class="h-mobile-mask"></div>
     <div class="head-mobile">
@@ -1075,39 +1078,21 @@
   *
   */
  function dialogLogin(type) {
-
      var userName = $("[name='yyouxiang']").val();
-
-     alert(userName)
-
      var pwd = $("[name='ypass']").val();
-
-
      $.ajax({
-
          url:"../raaac/querylogin",
-
          type:"post",
-
          data:{ "username":userName, "userpass":pwd},
-
-         dataType:"text",
-
-         success:function(flag){
-
-             alert(flag)
-
-             if(flag=="success"){
-
-                 //alert("成功")
-                 location.href="e-chu.jsp";
-
-             }else if(flag=="erroruserpas"){
-
+         dataType:"json",
+         success:function(map){
+                       alert(map)
+                       alert(map)
+                 if(map.mas=="success"){
+                     location.href="shouye.jsp";
+             }else if(map.mas=="erroruserpas"){
                  alert("账号或密码错误");
-
-             }else if(flag=="error"){
-
+             }else if(map.mas=="error"){
                  alert("账号不存在")
              }
          },
@@ -1117,12 +1102,19 @@
      })
  }
 
+ function  tiao(){
+     var  uuid=$("#userid").val();
+
+     var searchUrl =encodeURI("adminzil.html?uuid="+uuid);   //使用encodeURI编码
+
+      window.location.href =searchUrl;
+
+ }
  /**
   * 注册新用户
   */
  function dialogRegister(regType) {
-
-    $(".e-l-jy").html('');
+     $(".e-l-jy").html('');
      var emailVal = $("#yyouxiang").val();
      if (emailVal == "") {// 验证邮箱是否为空
          $("#yyouxiang")
@@ -1196,14 +1188,18 @@
      }
      $.ajax({
          url :"../raaac/register",
-         data : {"username" : $("#yyouxiang").val(),"password" : $("#ypass").val(),"phoe" : $("#yphone").val()},
+         data : {
+             "username" : $("#yyouxiang").val(),
+             "password" : $("#ypass").val(),
+             "phoe" : $("#yphoe").val()
+         },
          type : "post",
          dataType : "text",
          cache : false,
          async : false,
          success : function(result) {
                  if(result=="ok"){
-alert("注册成功，返回登录")
+                     alert("注册成功，返回登录")
                  }else{
                      alert("用户名已被注册")
                  }
@@ -1267,7 +1263,6 @@ alert("注册成功，返回登录")
          "蚂蚁课堂网站的理念是，蚂蚁课堂网站所有教学视频全部免费，专为IT爱好者提供免费教学服务网站。我希望别人能够看完我的教学视频，能够得到技术上的帮助，少走弯路。能够找到一份满意工作，我就非常开心！感谢您对蚂蚁课堂网站的支持，希望您能够支持蚂蚁课堂越办越好，将蚂蚁课堂网站推荐给您的朋友、同学，让他们也能在蚂蚁课堂得到帮助。如果您觉得蚂蚁课堂比较好，也可以打赏蚂蚁课堂网站。为了给予蚂蚁课堂团队有更多动力制作视频教程,您可以打赏一下蚂蚁课堂,打开支付宝扫一扫图下二维码,即可支援蚂蚁课堂。",
          0, "http://www.baidu.com");
  }
-
  /**
   * 学过此课程的用户
   */
@@ -1435,5 +1430,31 @@ alert("注册成功，返回登录")
          lrFun();
      }
  }
+ $(function(){
+     var url = location.search;
+     var hid = url.split( "=" );
+     var  searchText =decodeURI(hid[1]);   //decodeURI解码
+     if(searchText=="qingchu"){
+         $("#userid").val("0")
+     }
+ });
+ $(function(){
+             if($("#userid").val()!=""&$("#userid").val()!=null&$("#userid").val()!='0'){
+                 $("#dlzcqh").html(
+
+                         ' <li  id="is-login-one">' +
+                         '                    <a href="http://www.itmayiedu.com/uc/letter" title="消息" id="headerMsgCountId">' +
+                         '                    <em     class="icon18 news-icon">&nbsp;</em></a>' +
+                         '                <q class="red-point" style="display: none">&nbsp;</q></li>' +
+                         '                <li  id="is-login-two">' +
+                         '                    <a   onclick="tiao()" title="">' +
+                         ' '+
+                         '                    <img src="http://www.itmayiedu.com/static/inxweb/img/avatar-boy.gif" width="30" height="30" class="vam picImg" alt=""> </a>' +
+                         '                    <a href="javascript:void(0)" title="退出" onclick="qkson();" class="ml5">退出</a></li>'
+                 )
+
+             }
+         }
+ )
 </script>
 </html>
