@@ -1087,6 +1087,7 @@
          dataType:"json",
          success:function(map){
                        alert(map)
+                       alert(map)
                  if(map.mas=="success"){
                      location.href="shouye.jsp";
              }else if(map.mas=="erroruserpas"){
