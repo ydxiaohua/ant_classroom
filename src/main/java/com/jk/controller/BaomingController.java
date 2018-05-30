@@ -63,7 +63,6 @@ public class BaomingController {
     @RequestMapping(value="/addbaoming")
     @ResponseBody
     public String addbaoming(Registrationcentre registrationcentre){
-        System.out.println(registrationcentre);
         baomingService.addbaoming(registrationcentre);
         return "添加成功";
     }
@@ -96,8 +95,9 @@ public class BaomingController {
     //新增用户
     @RequestMapping(value="/addpeople")
     @ResponseBody
-    public void addpeople(Registrationcentre registrationcentre){
-        baomingService.addpeople(registrationcentre);
+    public String addpeople(Registrationcentre registrationcentre){
+        String zz = baomingService.addpeople(registrationcentre);
+        return zz;
     }
 
 

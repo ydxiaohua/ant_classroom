@@ -22,7 +22,7 @@ public interface BaomingService {
 
     List<People> queryvipuserlist(Integer phone, String peoplenickname,Integer minage,Integer maxage);
 
-    void addpeople(Registrationcentre registrationcentre);
+    String addpeople(Registrationcentre registrationcentre);
 
     void updateVIP(Integer peopleid);
 }
