@@ -22,17 +22,20 @@
 
 </head>
 <body>
+
+
+
 <br>
 <form class="form-inline" id="conn">
 <%--@declare id="inputemail3"--%>
-<a href="javascript:insertcomment()" class="btn btn-success" role="button">添加</a>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="javascript:insertcomment()" class="btn btn-success" role="button">添加</a><br>
+    &nbsp;&nbsp;
     <div class="form-group">
         <%--@declare id="exampleinputname2"--%>
             <label for="exampleInputName2"></label>
         评论内容:<input type="text" class="form-control" id="plnr" name="comcontent">
     </div>
-    &nbsp;&nbsp;&nbsp;
+    &nbsp;
     <div class="form-group">
         <label for="exampleInputName2"></label>
         创建时间:<a class='input-group date' id='datetimepicker1' >
@@ -48,13 +51,13 @@
                 </span>
         </a>
     </div>
-    &nbsp;&nbsp;&nbsp;
+    &nbsp;
     <div class="form-group">
         <%--@declare id="exampleinputname2"--%>
         <label for="exampleInputName2"></label>
         课程名称:<input type="text" class="form-control" id="kcmc" name="courseid">
     </div>
-    &nbsp;&nbsp;
+    &nbsp;
     <a href="javascript:search()" class="btn btn-success" role="button">查询</a>
 <br><br>
 
@@ -106,6 +109,7 @@
         //bootstrap默认是客户端分页client 若写服务端则出不来结果server
         sidePagination:"",//
         pagination:true,//开启分页
+        height:450,
         paginationLoop:true,//开启分页无限循环
         pageNumber:1,//当前页数
         pageSize:3,//每页条数
