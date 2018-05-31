@@ -11,19 +11,18 @@ public class People implements Serializable {
     private static final long serialVersionUID = 7306508843024901955L;
 
     @Id
-    private Integer peopleid;
-    private String email;
-    private String phone;
-    private String peoplepass;
-    private Integer ynvip;
-    private String vipendtime;
-    private String peoplename;
-    private String peoplenickname;
-    private Integer peoplesex;
-    private Integer peopleage;
-
-    private Integer minage;
-    private Integer maxage;
+    private Integer  peopleid;
+    private String   email;
+    private String   phone;
+    private String   peoplepass;
+    private Integer  ynvip;
+    private String   vipendtime;
+    private String   peoplename;
+    private String   peoplenickname;
+    private Integer  peoplesex;
+    private Integer  peopleage;
+    private Integer  minage;
+    private Integer  maxage;
 
     public Integer getPeopleid() {
         return peopleid;

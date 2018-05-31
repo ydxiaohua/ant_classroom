@@ -64,7 +64,6 @@ public class BaomingController {
     @RequestMapping(value="/addbaoming")
     @ResponseBody
     public String addbaoming(Registrationcentre registrationcentre){
-        System.out.println(registrationcentre);
         baomingService.addbaoming(registrationcentre);
         return "添加成功";
     }
@@ -87,5 +86,54 @@ public class BaomingController {
         baomingService.deletevipuser(peopleid);
         return "删除成功";
     }
+
+
+
+    /*前台==============================================================*/
+
+
+
+    //新增用户
+    @RequestMapping(value="/addpeople")
+    @ResponseBody
+    public String addpeople(Registrationcentre registrationcentre){
+        String zz = baomingService.addpeople(registrationcentre);
+        return zz;
+    }
+
+
+    //充值VIP
+    @RequestMapping(value="/updateVIP")
+    @ResponseBody
+    public String updateVIP(Integer ynvip,Integer peopleid){
+        String qq = baomingService.updateVIP(ynvip,peopleid);
+        return qq;
+    }
+
+
+    //查询是否为会员
+    @RequestMapping(value="/lookynVIP")
+    @ResponseBody
+    public String lookynVIP(Integer peopleid){
+        String pp = baomingService.lookynVIP(peopleid);
+        return pp;
+    }
+
+    //查询会员到期时间
+    @RequestMapping(value="/daoqi")
+    public String daoqi(Integer peopleid,HttpServletRequest request){
+        People people = baomingService.daoqi(peopleid);
+        request.getSession().setAttribute("people",people);
+        return "twl/daoqi.jsp";
+    }
+
+    //过期之后进行的操作
+    @RequestMapping(value="/guoqi")
+    @ResponseBody
+    public Integer guoqi(Integer peopleid){
+        Integer i = baomingService.guoqi(peopleid);
+        return i;
+    }
+
 }
 */

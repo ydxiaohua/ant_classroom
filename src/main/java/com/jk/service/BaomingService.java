@@ -22,5 +22,15 @@ public interface BaomingService {
     void deletevipuser(String peopleid);
 
     List<People> queryvipuserlist(Integer phone, String peoplenickname,Integer minage,Integer maxage);
+
+    String addpeople(Registrationcentre registrationcentre);
+
+    String updateVIP(Integer ynvip,Integer peopleid);
+
+    String lookynVIP(Integer peopleid);
+
+    People daoqi(Integer peopleid);
+
+    Integer guoqi(Integer peopleid);
 }
 */

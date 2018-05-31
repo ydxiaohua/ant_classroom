@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>报名用户信息</title>\
+    <title>报名用户信息</title>
 
     <!-- Bootstrap 插件 css -->
     <link href="<%=request.getContextPath() %>/bootstrap/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
@@ -22,6 +22,7 @@
     <link href="<%=request.getContextPath() %>/bootstrap/bootstrap-dialog/dist/css/bootstrap-dialog.css" rel="stylesheet">
     <!-- bootstrap-fileinput css -->
     <link href="<%=request.getContextPath() %>/bootstrap/bootstrap-fileinput/css/fileinput.css" rel="stylesheet">
+
 </head>
 <body>
 
@@ -97,7 +98,8 @@
             {field:'act',title:'操作',width:100,
                 formatter: function(value,row,index){
                     return '<a href="javascript:deletebaoming('+row.baouserid+')" class="btn btn-danger" role="button">删除</a><a href="javascript:updatebaoming('+row.baouserid+')" class="btn btn-warning" role="button">修改</a>';
-                }},
+                }
+            }
         ]
     })
 
