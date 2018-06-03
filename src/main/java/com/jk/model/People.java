@@ -13,11 +13,26 @@ public class People implements Serializable {
     private   String   phone;
     private   String   peoplepass;
     private   Integer  ynvip;
-    private   String   vipenddate;
+    private   String   vipendtime;
     private   String   peoplename;
     private   String   peoplenickname;
     private   Integer  peoplesex;
     private   Integer  peopleage;
+    private   String   Peopledate;
+    private   String   Peopleimg;
+
+
+    public String getPeopleimg() {
+        return Peopleimg;
+    }
+
+    public void setPeopleimg(String peopleimg) {
+        Peopleimg = peopleimg;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 
     public Integer getPeopleid() {
         return peopleid;
@@ -59,12 +74,12 @@ public class People implements Serializable {
         this.ynvip = ynvip;
     }
 
-    public String getVipenddate() {
-        return vipenddate;
+    public String getVipendtime() {
+        return vipendtime;
     }
 
-    public void setVipenddate(String vipenddate) {
-        this.vipenddate = vipenddate;
+    public void setVipendtime(String vipendtime) {
+        this.vipendtime = vipendtime;
     }
 
     public String getPeoplename() {
@@ -99,6 +114,14 @@ public class People implements Serializable {
         this.peopleage = peopleage;
     }
 
+    public String getPeopledate() {
+        return Peopledate;
+    }
+
+    public void setPeopledate(String peopledate) {
+        Peopledate = peopledate;
+    }
+
     @Override
     public String toString() {
         return "People{" +
@@ -107,11 +130,13 @@ public class People implements Serializable {
                 ", phone='" + phone + '\'' +
                 ", peoplepass='" + peoplepass + '\'' +
                 ", ynvip=" + ynvip +
-                ", vipenddate='" + vipenddate + '\'' +
+                ", vipendtime='" + vipendtime + '\'' +
                 ", peoplename='" + peoplename + '\'' +
                 ", peoplenickname='" + peoplenickname + '\'' +
                 ", peoplesex=" + peoplesex +
                 ", peopleage=" + peopleage +
+                ", Peopledate='" + Peopledate + '\'' +
+                ", Peopleimg='" + Peopleimg + '\'' +
                 '}';
     }
 }

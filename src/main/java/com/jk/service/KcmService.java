@@ -54,5 +54,16 @@ public interface KcmService {
 
     List<Courseproblem> querywenshow1(Integer typeid);
 
-    void updatezan(Integer resultid);
+
+    List<Courseproblem> querybywenid(Integer questionid);
+
+    String updatezan(Integer resultid, Integer peopleid);
+
+    List<Courseproblem> querynew();
+
+    List<Courseproblem> queryhot();
+
+    List<Courseproblem> querytiwen(Integer peopleid);
+
+    List<Courseproblem> querymyhuida(Integer peopleid);
 }

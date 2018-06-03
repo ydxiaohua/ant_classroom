@@ -1,3 +1,4 @@
+
 package com.jk.service;
 
 import com.jk.model.People;
@@ -24,5 +25,12 @@ public interface BaomingService {
 
     String addpeople(Registrationcentre registrationcentre);
 
-    void updateVIP(Integer peopleid);
+    String updateVIP(Integer ynvip,Integer peopleid);
+
+    String lookynVIP(Integer peopleid);
+
+    People daoqi(Integer peopleid);
+
+    Integer guoqi(Integer peopleid);
 }
+

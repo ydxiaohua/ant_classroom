@@ -24,7 +24,9 @@ public class BootstrapAction{
 		/*System.out.println(greatBeauty);*/
 
 		Map map = new HashMap(1);
+
 		map.put("a",greatBeauty);
+
 		return map;
 	}
 	

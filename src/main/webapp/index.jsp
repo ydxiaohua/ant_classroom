@@ -135,8 +135,8 @@
   $(function(){
     	$('#tree').treeview({
             data: getTree(),
-     	   // expandIcon:"glyphicon glyphicon-eye-close",//父级关闭时的样式
-    	   // emptyIcon:"glyphicon glyphicon-minus",//子节点的样式
+     	    // expandIcon:"glyphicon glyphicon-eye-close",//父级关闭时的样式
+    	    // emptyIcon:"glyphicon glyphicon-minus",//子节点的样式
     	    //collapseIcon:"glyphicon glyphicon-plus",//父级展开时的样式
             expandIcon: "glyphicon glyphicon-stop",
             collapseIcon: "glyphicon glyphicon-unchecked",
@@ -149,7 +149,10 @@
             showTags: true,
             highlightSelected: true,
             selectedColor: "#66FFFF",
-            selectedBackColor: "darkorange",
+            selectedBackColor:"darkorange",
+            levels:function (){
+                Default:1
+            },
             onNodeSelected:function(event, data){
     			  var url = "<%=request.getContextPath()%>"+data.url
     			  if(data.url == "/login.jsp"){

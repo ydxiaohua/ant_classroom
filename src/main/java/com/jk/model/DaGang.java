@@ -14,11 +14,11 @@ public class DaGang implements Serializable{
     private int  uid;
     private int  ynvip;
     private String  xiaojie;
+    private  int   courseid;
 
     //业务字段
 
     private  String  username;
-
 
     public String getUsername() {
         return username;
@@ -76,6 +76,14 @@ public class DaGang implements Serializable{
         this.xiaojie = xiaojie;
     }
 
+    public int getCourseid() {
+        return courseid;
+    }
+
+    public void setCourseid(int courseid) {
+        this.courseid = courseid;
+    }
+
     @Override
     public String toString() {
         return "DaGang{" +
@@ -85,6 +93,8 @@ public class DaGang implements Serializable{
                 ", uid=" + uid +
                 ", ynvip=" + ynvip +
                 ", xiaojie='" + xiaojie + '\'' +
+                ", courseid=" + courseid +
+
                 '}';
     }
 }

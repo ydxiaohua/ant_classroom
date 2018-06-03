@@ -76,7 +76,7 @@
     })
         function    chaxlit(name){
                 $.ajax({
-                    url:"../raaac/zhexian",
+                    url:"../raaac/peoyue",
                     type:"post",
                     data:{"name":name},
                     dataType:"json",

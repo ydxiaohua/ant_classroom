@@ -27,7 +27,10 @@
                         <input type="text" name="teacherdate" value="${list.teacherdate}"/>
                     </td>
                 </tr>
-
+                <tr>
+                    <td>个人邮箱</td>
+                    <td><input type="text"  name="teachernote" value="${list.teachernote}"/></td>
+                </tr>
 
             </table>
         </form>

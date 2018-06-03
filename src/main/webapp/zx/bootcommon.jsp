@@ -25,3 +25,8 @@
 <link href="../HubSpot-messenger/messenger-theme-future.css" rel="stylesheet">
 <script src="../HubSpot-messenger/messenger.min.js"></script>
 
+<!-- bootstrap-datetimepicker -->
+<script src="<%=request.getContextPath() %>/bootstrap/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script src="<%=request.getContextPath() %>/bootstrap/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+
+<script src="<%=request.getContextPath() %>/bootstrap/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>

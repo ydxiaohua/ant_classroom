@@ -31,17 +31,22 @@ public class CommentController {
             return com;
         }else{*/
         System.out.println(comment);
+
         Query query= new Query();
         if(comment.getComcontent()!=""){
+
             query= new Query(Criteria.where("comcontent").regex(comment.getComcontent()));
         }
         if(comment.getStartcomdate()!=""){
+
             query= new Query(Criteria.where("comdate").gte(comment.getStartcomdate()));
         }
         if(comment.getEndcomdate()!=""){
+
             query= new Query(Criteria.where("comdate").lte(comment.getEndcomdate()));
         }
         if(comment.getCourseid()!=null){
+
             query= new Query(Criteria.where("courseid").is(comment.getCourseid()));
         }
 

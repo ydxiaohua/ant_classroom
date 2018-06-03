@@ -20,8 +20,12 @@
     <link href="<%=request.getContextPath() %>/bootstrap/bootstrap-dialog/dist/css/bootstrap-dialog.css" rel="stylesheet">
     <!-- bootstrap-fileinput css -->
     <link href="<%=request.getContextPath() %>/bootstrap/bootstrap-fileinput/css/fileinput.css" rel="stylesheet">
+
 </head>
 <body>
+
+<input type="hidden" id="asddsb" value="1"><%--${peopleid}--%>
+
 <div class="bg-fa of">
     <section class="container">
         <section class="i-article">
@@ -52,12 +56,14 @@
                     <p><br></p>
                     <p><br></p>
                     <p><br></p>
-                    <center><button type="button" onclick="chongzhi(${peopleid})" class="btn btn-primary btn-lg">立即充值</button></center>
+                    <center><div id="xianshi"></div></center>
                 </div>
             </div>
         </section>
     </section>
 </div>
+
+<%--<button type="button" onclick="chongzhi(${peopleid})" class="btn btn-primary btn-lg">立即充值</button>--%>
 
 <!--jQuery核心js  -->
 <script src="<%=request.getContextPath() %>/bootstrap/jquery.min.js"></script>
@@ -85,16 +91,98 @@
 
 <script type="text/javascript">
 
-    function chongzhi(peopleid){
+    //判断是否有用户登录
+    $(function(){
+        var user = $("#asddsb").val();
+        if(user != ""){
+            $("#xianshi").html('<button type="button" onclick="chongzhi()" class="btn btn-primary btn-lg">立即充值</button>');
+        }
+        if(user == ""){
+            $("#xianshi").html('<button type="button" onclick="chongzhi()" style="background: #8c8c8c;" class="btn btn-primary btn-lg">请先登录后充值</button>');
+        }
+    })
+
+
+    //判断该用户是否为会员
+    $(function(){
+        var ssssssss = $("#asddsb").val();
         $.ajax({
-            url:"<%=request.getContextPath()%>/baoming/updateVIP?peopleid="+peopleid,
+            url:"<%=request.getContextPath()%>/baoming/lookynVIP?peopleid="+ssssssss,
             type:"post",
-            success:function(){
-                alert("购买成功！");
-                location.reload();
+            success:function(pp){
+                if(pp == "是会员"){
+                    $("#xianshi").html('<button type="button" onclick="daoqi()" class="btn btn-primary btn-lg" class="btn btn-primary btn-lg">您已是尊贵的会员用户,点击查看会员到期时间</button>');
+                }
+                if(pp == "不是会员"){
+                    $("#xianshi").html('<button type="button" onclick="chongzhi()" class="btn btn-primary btn-lg">立即充值</button>');
+                }
             }
         })
+    })
+
+
+    //会员到期时间
+    function daoqi(){
+        var peopleid = $("#asddsb").val();
+        BootstrapDialog.show({
+            title: '会员到期时间',
+            message: $('<div></div>').load('<%=request.getContextPath()%>/baoming/daoqi?peopleid='+peopleid),
+            buttons: [{
+                label: '确定',
+                action: function() {
+                    location.reload();
+                }
+            }]
+        })
     }
+
+
+    function chongzhi(peopleid){
+        var peopleid = $("#asddsb").val();
+        window.location.href="<%=request.getContextPath()%>/twl/goumaiVIP.jsp?peopleid="+peopleid;
+
+    }
+
+
+    $(function(){
+        var peopleid = $("#asddsb").val();
+        $.ajax({
+            url:"<%=request.getContextPath()%>/baoming/guoqi?peopleid="+peopleid,
+            type:"post",
+            success:function(){
+
+            }
+        })
+    })
+
+    /*function chongzhi(peopleid){
+        BootstrapDialog.show({
+            title: '购买会员',
+            message: $('<div></div>').load('<%=request.getContextPath()%>/twl/goumaiVIP.jsp'),
+            buttons: [{
+                label: '购买',
+                action: function() {
+                    $.ajax({
+                        url:"<%=request.getContextPath()%>/baoming/updateVIP?peopleid="+peopleid,
+                        type:"post",
+                        data:$("#addForm").serialize(),
+                        success:function(result){
+                            location.reload();
+                        }
+                    })
+                }
+            },{
+                label: '取消',
+                action:function(result) {
+                    result.close();
+                }
+            }]
+        })
+    }*/
+
+
+
+
 
 </script>
 </body>

@@ -26,11 +26,21 @@
 
                         <tr>
                             <td>标题</td>
-                            <td><input type="text"   name="dgname"/></td>
+                            <td><input type="text"   name="dgname" class="form-control"/></td>
                         </tr>
                         <tr>
                             <td>创建时间</td>
-                            <td><input type="text"  name="pdate" /></td>
+                            <td><input type="text"  name="pdate" class="form-control"/></td>
+                        </tr>
+                        <tr>
+                            <td>所属课程</td>
+                            <td>
+                         <select name="courseid" class="form-control">
+
+                            </select>
+
+
+                            </td>
                         </tr>
                         <tr>
                             <td>是否为VIP</td>
@@ -43,7 +53,8 @@
                         <tr>
                             <td>所属小节</td>
                             <td>
-                                <input type="text"  name="xiaojie" />
+
+                                第<input type="text"  name="xiaojie" class="form-control"/>节
 
                             </td>
                         </tr>
@@ -103,7 +114,11 @@
                     }
                 }
             },
-            {field:'xiaojie',title:'小节',width: 100},
+            {field:'xiaojie',title:'小节',width: 100,
+                formatter: function(value,row,index) {
+                    return "第"+value+"节";
+                }
+            },
 
 
             {field:'act',title:'操作',width:100,
@@ -186,6 +201,21 @@
         })
     }
 
+    $.ajax({
+        url:"<%=request.getContextPath()%>/CourseController/querycourse",
+        type:"post",
+        dataType:"json",
+        success:function (Teacher){
+            var option = "<option value=''>请选择</option>";
+            $(Teacher).each(function (){
+                option += "<option value='"+this.courseid+"'>"+this.coursename+"</option>";
+            })
+            $("[name='courseid']").html(option);
+        },
+        error:function (){
+            alert(0);
+        }
+    })
 
 
 </script>

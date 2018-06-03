@@ -275,23 +275,22 @@
                 <div class="fl col-7">
                     <section class="mr30 pt10">
                         <section class="c-infor-tabTitle c-tab-title">
-                            <a href="javascript: void(0)" title="全部问答" onclick="submitform(3)" >全部问答</a>
+                            <a href="javascript: void(0)" title="全部问答" onclick="quanbu()" >全部问答</a>
                             <a href="javascript: void(0)" title="课程问答" onclick="submitform(1)" >课程问答</a>
                             <a href="javascript: void(0)" title="学习分享" onclick="submitform(2)" >学习分享</a>
                         </section>
-                        <%--<div class="js-wrap">
+                        <div class="js-wrap">
                             <section class="fr">
 								<span class="c-ccc"> <tt class="c-master f-fM">1</tt>/<tt class="c-666 f-fM">4</tt>
 								</span>
                             </section>
                             <section class="fl">
                                 <ol class="js-tap clearfix">
-                                    <li class="current bg-orange"><a onclick="submitForm('addTime','order')" href="javascript:new(1)" title="最新">最新</a></li>
-                                    <li ><a onclick="submitForm('replycount','order')" href="javascript:void(0)" title="热门">热门</a></li>
-                                    <li ><a onclick="submitForm('status0','order')" href="javascript:void(0)" title="等待回答">等待回答</a></li>
+                                    <li class="current bg-orange"><a onclick="hot()" href="javascript:void(0)" title="热门">热门</a></li>
+                                    <li class="current bg-orange"><a onclick="zuinew()" href="javascript:void(0)" title="最新">最新</a></li>
                                 </ol>
                             </section>
-                        </div>--%>
+                        </div>
                         <!-- /问题列表 开始 -->
                         <div class="q-list">
                             <section class="q-all-list">
@@ -395,24 +394,6 @@
             </div>
         </section>
     </footer>
-    <!-- 代码部分 begin -->
-    <!-- <div class="r-fixed-wrap">
-    <ul class="r-fixed-ul">
-    <li id="goTopBtn" class="undis"><a href="javascript: void(0)"
-    title="返回顶部" class="bg-orange"> <em class="r-f-icon-3">&nbsp;</em><span>返回顶部</span>
-    </a></li>
-    <li class="foot-zixun">
-    <a href="" title="在线咨询" class="bg-orange">
-    <em class="r-f-icon-1" >&nbsp;</em><span>在线咨询</span>
-    </a>
-    </li>
-    <li class="foot-zixun">
-    <a href="" title="扫描关注" class="bg-orange">
-    <em class="r-f-icon-2">&nbsp;</em><span>扫描关注</span>
-    </a>
-    </li>
-    </ul>
-    </div> -->
     <section
             style="color: #666; position: absolute; left: 50%; bottom: 20px; z-index: 7; margin-left: -80px;">
         <span>Powered by</span><a style="margin-left: 2px; color: #666;"
@@ -445,7 +426,6 @@
                 }
                 return flag;
             }
-
             var myerror = '';
             (function () {
                 var bp = document.createElement('script');
@@ -480,10 +460,6 @@
                 $(".weixing-container").bind('mouseleave', function () {
                     $('.weixing-show').hide();
                 });
-
-                // if (!IsPC()) {
-                //     $("#main-im").hide();
-                // }
             });
 
             daovoice('init', {
@@ -504,12 +480,11 @@
             url:"<%=request.getContextPath()%>/kcmuser/queryWenType",//请求地址
             type:"post",//设置请求方式
             dataType:"json",//返回数据的类型
+            async:false,
             success:function (WenType){
-
-                var checkedbox = "<a onclick='submitForm('0','questionsTagId')' href='javascript:;' class='list-tag' data-id='0' title='JAVA'>全部</a>";
-
+                var checkedbox = "<a onclick='quan()' href='javascript:quan();' class='list-tag' data-id='0' title='JAVA'>全部</a>";
                 $.each(WenType,function(){
-                    checkedbox += " <a title='"+this.questionname+"' data-id='"+this.questionid+"' class='list-tag' href='javascript:submitForm1(\""+this.questionname+" \")' >"+this.questionname+"</a>";
+                    checkedbox += " <a title='"+this.questionname+"' data-id='"+this.questionid+"' class='list-tag' href='javascript:submitform1(\""+this.questionid+" \")' >"+this.questionname+"</a>";
                 })
                 $("#sub1").html(checkedbox);
             },
@@ -524,6 +499,7 @@
             url:"<%=request.getContextPath()%>/kcmuser/querypagewen",//请求地址
             type:"post",//设置请求方式
             dataType:"json",//返回数据的类型
+            async:false,
             success:function (data){
                 var checkedbox = "";
                 $.each(data,function(){
@@ -545,6 +521,7 @@
             url:"<%=request.getContextPath()%>/kcmuser/querywenshow",//请求地址
             type:"post",//设置请求方式
             dataType:"json",//返回数据的类型
+            async:false,
             success:function (data){
                 var bb="";
                 $.each(data,function(){
@@ -562,7 +539,7 @@
                         "\t\t\t<a href=\"javascript:tiao("+this.questionid+")\"  title=\"\" class=\"fsize16 c-333 vam\">"+this.questioncontent+"</a>\n" +
                         "\t\t</h3>\n" +
                         "\t\t<div class=\"mt15\">\n" +
-                        "\t\t\t<span class=\"c-ccc fl vam\">有关</span>\n" +
+                        "\t\t\t<span class=\"c-ccc fl vam\">"+this.questiondate+"</span>\n" +
                         "\t\t\t<section class=\"fl ml20 pt10\">\n" +
                         "\t\t\t\t<div class=\"taglist clearfix\">\n" +
                         "\t\t\t\t\t<a title=\"MyBatis\" data-id=\"15\" onclick=\"submitform('15','questionsTagId')\" class=\"list-tag\" href=\"javascript:;\">"+this.questiontypeid+"</a>\n" +
@@ -594,6 +571,7 @@
     }
     function submitform(obj){
             if(obj==3){
+                alert("全部");
                 kcm()
             }
             $.ajax({
@@ -619,7 +597,7 @@
                             "\t\t\t<a href=\"javascript:tiao("+this.questionid+")\"  title=\"\" class=\"fsize16 c-333 vam\">"+this.questioncontent+"</a>\n" +
                             "\t\t</h3>\n" +
                             "\t\t<div class=\"mt15\">\n" +
-                            "\t\t\t<span class=\"c-ccc fl vam\">有关</span>\n" +
+                            "\t\t\t<span class=\"c-ccc fl vam\">"+this.questiondate+"</span>\n" +
                             "\t\t\t<section class=\"fl ml20 pt10\">\n" +
                             "\t\t\t\t<div class=\"taglist clearfix\">\n" +
                             "\t\t\t\t\t<a title=\"MyBatis\" data-id=\"15\" onclick=\"submitform('15','questionsTagId')\" class=\"list-tag\" href=\"javascript:;\">"+this.questiontypeid+"</a>\n" +
@@ -638,6 +616,142 @@
             })
     }
 
+    function quanbu(){
+        location.href="<%=request.getContextPath()%>/jsp/wenda.jsp"
+    }
+
+
+    function submitform1(questionid){
+        $.ajax({
+            url:"<%=request.getContextPath()%>/kcmuser/querybywenid",//请求地址
+            type:"post",//设置请求方式
+            dataType:"json",//返回数据的类型
+            data:{"questionid":questionid},
+            async:false,
+            success:function (data){
+                var bb="";
+                $.each(data,function(){
+                    bb+="<li><aside class=\"q-head-pic\"><img src=\"\" alt=\"\"><p class=\"hLh30 txtOf\"><span class=\"c-999\">"+this.peoplename+"</span></p></aside>\n" +
+                        "\t<section class=\"q-txt-box\"><a class=\"replyBrowseNum\" href=\"javascript:tiao("+this.questionid+")\" title=\"\">\n" +
+                        "\t\t\t<div class=\"replyNum\"><span class=\"r-b-num\"></span>\n" +
+                        "\t\t\t\t<p class=\"hLh30\"><span class=\"c-999 f-fA\">查看回复</span></p>\n" +
+                        "\t\t\t</div>\n" +
+                        "\t\t\t<div class=\"browseNum\">\n" +
+                        "\t\t\t    <span class=\"r-b-num\">"+this.looknum+"</span><p class=\"hLh30\"><span class=\"c-999 f-fA\">浏览数</span></p>\n" +
+                        "\t\t\t</div>\n" +
+                        "\t\t</a>\n" +
+                        "\t\t<h3 class=\"hLh30 txtOf\">\n" +
+                        "\t\t\t<em class=\"icon16 q-tw\">&nbsp;</em>\n" +
+                        "\t\t\t<a href=\"javascript:tiao("+this.questionid+")\"  title=\"\" class=\"fsize16 c-333 vam\">"+this.questioncontent+"</a>\n" +
+                        "\t\t</h3>\n" +
+                        "\t\t<div class=\"mt15\">\n" +
+                        "\t\t\t<span class=\"c-ccc fl vam\">"+this.questiondate+"</span>\n" +
+                        "\t\t\t<section class=\"fl ml20 pt10\">\n" +
+                        "\t\t\t\t<div class=\"taglist clearfix\">\n" +
+                        "\t\t\t\t\t<a title=\"MyBatis\" data-id=\"15\" onclick=\"submitform('15','questionsTagId')\" class=\"list-tag\" href=\"javascript:;\">"+this.questiontypeid+"</a>\n" +
+                        "\t\t\t\t</div>\n" +
+                        "\t\t\t</section>\n" +
+                        "\t\t\t<div class=\"clear\"></div>\n" +
+                        "\t\t</div>\n" +
+                        "\t</section>\n" +
+                        "</li>";
+                })
+                $("#wenpage").html(bb);
+            },
+            error:function (){
+                alert("程序出错");
+            }
+        })
+    }
+
+    function quan(){
+        location.href="<%=request.getContextPath()%>/jsp/wenda.jsp"
+    }
+
+
+    function zuinew(){
+        $.ajax({
+            url:"<%=request.getContextPath()%>/kcmuser/querynew",//请求地址
+            type:"post",//设置请求方式
+            dataType:"json",//返回数据的类型
+            async:false,
+            success:function (data){
+                var bb="";
+                $.each(data,function(){
+                    bb+="<li><aside class=\"q-head-pic\"><img src=\"\" alt=\"\"><p class=\"hLh30 txtOf\"><span class=\"c-999\">"+this.peoplename+"</span></p></aside>\n" +
+                        "\t<section class=\"q-txt-box\"><a class=\"replyBrowseNum\" href=\"javascript:tiao("+this.questionid+")\" title=\"\">\n" +
+                        "\t\t\t<div class=\"replyNum\"><span class=\"r-b-num\"></span>\n" +
+                        "\t\t\t\t<p class=\"hLh30\"><span class=\"c-999 f-fA\">回复信息</span></p>\n" +
+                        "\t\t\t</div>\n" +
+                        "\t\t\t<div class=\"browseNum\">\n" +
+                        "\t\t\t    <span class=\"r-b-num\">"+this.looknum+"</span><p class=\"hLh30\"><span class=\"c-999 f-fA\">浏览数</span></p>\n" +
+                        "\t\t\t</div>\n" +
+                        "\t\t</a>\n" +
+                        "\t\t<h3 class=\"hLh30 txtOf\">\n" +
+                        "\t\t\t<em class=\"icon16 q-tw\">&nbsp;</em>\n" +
+                        "\t\t\t<a href=\"javascript:tiao("+this.questionid+")\"  title=\"\" class=\"fsize16 c-333 vam\">"+this.questioncontent+"</a>\n" +
+                        "\t\t</h3>\n" +
+                        "\t\t<div class=\"mt15\">\n" +
+                        "\t\t\t<span class=\"c-ccc fl vam\">"+this.questiondate+"</span>\n" +
+                        "\t\t\t<section class=\"fl ml20 pt10\">\n" +
+                        "\t\t\t\t<div class=\"taglist clearfix\">\n" +
+                        "\t\t\t\t\t<a title=\"MyBatis\" data-id=\"15\" onclick=\"submitform('15','questionsTagId')\" class=\"list-tag\" href=\"javascript:;\">"+this.questiontypeid+"</a>\n" +
+                        "\t\t\t\t</div>\n" +
+                        "\t\t\t</section>\n" +
+                        "\t\t\t<div class=\"clear\"></div>\n" +
+                        "\t\t</div>\n" +
+                        "\t</section>\n" +
+                        "</li>";
+                })
+                $("#wenpage").html(bb);
+            },
+            error:function (){
+                alert("程序出错");
+            }
+        })
+    }
+
+    function hot(){
+        $.ajax({
+            url:"<%=request.getContextPath()%>/kcmuser/queryhot",//请求地址
+            type:"post",//设置请求方式
+            dataType:"json",//返回数据的类型
+            async:false,
+            success:function (data){
+                var bb="";
+                $.each(data,function(){
+                    bb+="<li><aside class=\"q-head-pic\"><img src=\"\" alt=\"\"><p class=\"hLh30 txtOf\"><span class=\"c-999\">"+this.peoplename+"</span></p></aside>\n" +
+                        "\t<section class=\"q-txt-box\"><a class=\"replyBrowseNum\" href=\"javascript:tiao("+this.questionid+")\" title=\"\">\n" +
+                        "\t\t\t<div class=\"replyNum\"><span class=\"r-b-num\"></span>\n" +
+                        "\t\t\t\t<p class=\"hLh30\"><span class=\"c-999 f-fA\">回复信息</span></p>\n" +
+                        "\t\t\t</div>\n" +
+                        "\t\t\t<div class=\"browseNum\">\n" +
+                        "\t\t\t    <span class=\"r-b-num\">"+this.looknum+"</span><p class=\"hLh30\"><span class=\"c-999 f-fA\">浏览数</span></p>\n" +
+                        "\t\t\t</div>\n" +
+                        "\t\t</a>\n" +
+                        "\t\t<h3 class=\"hLh30 txtOf\">\n" +
+                        "\t\t\t<em class=\"icon16 q-tw\">&nbsp;</em>\n" +
+                        "\t\t\t<a href=\"javascript:tiao("+this.questionid+")\"  title=\"\" class=\"fsize16 c-333 vam\">"+this.questioncontent+"</a>\n" +
+                        "\t\t</h3>\n" +
+                        "\t\t<div class=\"mt15\">\n" +
+                        "\t\t\t<span class=\"c-ccc fl vam\">"+this.questiondate+"</span>\n" +
+                        "\t\t\t<section class=\"fl ml20 pt10\">\n" +
+                        "\t\t\t\t<div class=\"taglist clearfix\">\n" +
+                        "\t\t\t\t\t<a title=\"MyBatis\" data-id=\"15\" onclick=\"submitform('15','questionsTagId')\" class=\"list-tag\" href=\"javascript:;\">"+this.questiontypeid+"</a>\n" +
+                        "\t\t\t\t</div>\n" +
+                        "\t\t\t</section>\n" +
+                        "\t\t\t<div class=\"clear\"></div>\n" +
+                        "\t\t</div>\n" +
+                        "\t</section>\n" +
+                        "</li>";
+                })
+                $("#wenpage").html(bb);
+            },
+            error:function (){
+                alert("程序出错");
+            }
+        })
+    }
 </script>
 <!-- 统计代码 -->
 </body>

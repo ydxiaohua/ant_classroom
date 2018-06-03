@@ -17,54 +17,20 @@
 <!--   @*datetime控件-->
 <link href="../bootstrap/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet" />
 <body>
-<%--<form class="form-inline">
-    <div class="form-group">
-        手机号:<input type="text" class="form-control" id="a1" name="phone">
-    </div>&nbsp&nbsp&nbsp
-    <div class="form-group">
-        用户名:<input type="text" class="form-control" id="a2" name="peoplenickname">
-    </div>&nbsp&nbsp&nbsp
-    <div class="form-group">
-        年龄:<input type="text" class="form-control" id="a3" name="minage">至
-        <input type="text" class="form-control" id="a4" name="maxage">
-    </div>&nbsp&nbsp&nbsp
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="button" class="btn btn-success" onclick="search()" value="搜索"/>
-</form><br>--%>
 
-
-<form class="form-inline">
-</div>&nbsp&nbsp&nbsp
 <a class='input-group date' id='datetimepicker1'>
     <input size="16" type="text" onclick="Datetime()" name="qiandata" class="form-control" id='nowdate' style="width: 150px; height: 30px;" >
                 <span class="input-group-addon" style="float: left; width: 50px; height: 30px;">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>
 </a>
-</div>&nbsp&nbsp&nbsp
-→
-<div class="form-group">
+↓
 <a class='input-group date' id='datetimepicker2'>
     <input size="16" type="text" onclick="Datetime2()" name="hodata" class="form-control" id='nowdate2' style="width: 150px; height: 30px;" >
                 <span class="input-group-addon" style="float: left; width: 50px; height: 30px;">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>
-</div>&nbsp&nbsp&nbsp
 </a><input  type="button" value="区间查询"   class="btn btn-info" onclick="querylist()"/>
-</form><br>
-
-
-
-
-
-
-
-
-
-
-
-
-
 <table class="table  table-striped table-bordered table-hover"  id="share"></table>
 <div class="bdsharebuttonbox">
     <a href="#" class="bds_more" data-cmd="more"></a>
@@ -134,7 +100,7 @@
         $('#share').bootstrapTable({
             url: "<%=request.getContextPath()%>/user/sharelist",      //请求后台的URL（*）
             striped: true,//隔行变色
-            showPaginationSwitch:false,//是否显示 数据条数选择框
+            showPaginationSwitch:true,//是否显示 数据条数选择框
             minimumCountColumns:1,//最小留下一个
             showRefresh:true,//显示刷新按钮
             showToggle:true,//显示切换视图

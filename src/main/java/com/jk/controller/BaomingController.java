@@ -1,3 +1,4 @@
+
 package com.jk.controller;
 
 import com.jk.model.People;
@@ -72,9 +73,11 @@ public class BaomingController {
     @RequestMapping(value="/queryvipuserlist")
     @ResponseBody
     public List<People> queryvipuserlist(Integer phone,String peoplenickname,Integer minage,Integer maxage){
-        System.out.println(minage);
-        System.out.println(maxage);
+
+
         List<People> list = baomingService.queryvipuserlist(phone,peoplenickname,minage,maxage);
+
+        System.out.println("www"+list);
         return list;
     }
 
@@ -104,8 +107,35 @@ public class BaomingController {
     //充值VIP
     @RequestMapping(value="/updateVIP")
     @ResponseBody
-    public void updateVIP(Integer peopleid){
-        baomingService.updateVIP(peopleid);
+    public String updateVIP(Integer ynvip,Integer peopleid){
+        String qq = baomingService.updateVIP(ynvip,peopleid);
+        return qq;
+    }
+
+
+    //查询是否为会员
+    @RequestMapping(value="/lookynVIP")
+    @ResponseBody
+    public String lookynVIP(Integer peopleid){
+        String pp = baomingService.lookynVIP(peopleid);
+        return pp;
+    }
+
+    //查询会员到期时间
+    @RequestMapping(value="/daoqi")
+    public String daoqi(Integer peopleid,HttpServletRequest request){
+        People people = baomingService.daoqi(peopleid);
+        request.getSession().setAttribute("people",people);
+        return "twl/daoqi.jsp";
+    }
+
+    //过期之后进行的操作
+    @RequestMapping(value="/guoqi")
+    @ResponseBody
+    public Integer guoqi(Integer peopleid){
+        Integer i = baomingService.guoqi(peopleid);
+        return i;
     }
 
 }
+

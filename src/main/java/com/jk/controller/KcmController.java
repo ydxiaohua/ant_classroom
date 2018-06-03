@@ -35,11 +35,8 @@ public class KcmController {
     public String loginuser(User user, HttpSession session){
 
         Map<String, Object> map = kcmService.loginUser(user);
-
         User users = (User) map.get("user");
-
         if(users != null){
-
             session.setAttribute("userid",users.getUserid());
 
             session.setAttribute("username",users.getUsername());
@@ -62,7 +59,6 @@ public class KcmController {
     @RequestMapping("/queryWenList")
     public List queryWenList(){
         List<Courseproblem> list  = kcmService.queryWenList();
-        System.out.println(list);
         return list;
 
     }
@@ -80,13 +76,69 @@ public class KcmController {
         List<Courseproblem> list  = kcmService.querywenshow();
         return list;
     }
+    /*查询页面最新*/
+    @ResponseBody
+    @RequestMapping("/querynew")
+    public List querynew(){
+        List<Courseproblem> list  = kcmService.querynew();
+        return list;
+    }
+    /*查询页面最新*/
+    @ResponseBody
+    @RequestMapping("/queryhot")
+    public List queryhot(){
+        List<Courseproblem> list  = kcmService.queryhot();
+        return list;
+    }
     /*查询课程问答列表*/
     @ResponseBody
     @RequestMapping("/querywenshow1")
     public List querywenshow1(Integer typeid){
+
         List<Courseproblem> list  = kcmService.querywenshow1(typeid);
+
         return list;
     }
+
+
+    /*查询我的提问*/
+    @ResponseBody
+    @RequestMapping("/querytiwen")
+    public List querytiwen(HttpSession session){
+
+        Integer peopleid = (Integer) session.getAttribute("pid");
+
+        System.out.println(peopleid);
+        List<Courseproblem> list  = kcmService.querytiwen(peopleid);
+
+        System.out.println(list);
+        return list;
+    }
+
+
+    /*查询我的回答*/
+    @ResponseBody
+    @RequestMapping("/querymyhuida")
+    public List querymyhuida(HttpSession session){
+
+        Integer peopleid = (Integer) session.getAttribute("pid");
+
+        List<Courseproblem> list  = kcmService.querymyhuida(peopleid);
+
+        return list;
+    }
+
+
+
+
+    /*查询问题类型*/
+    @ResponseBody
+    @RequestMapping("/querybywenid")
+    public List querybywenid(Integer questionid){
+        List<Courseproblem> list  = kcmService.querybywenid(questionid);
+        return list;
+    }
+
     /*查询页面热门回答推荐*/
     @ResponseBody
     @RequestMapping("/querypagewen2")
@@ -139,7 +191,7 @@ public class KcmController {
         //获取String类型的时间
         String createdate = sdf.format(date);
         answer.setResultdate(createdate);
-        answer.setUserid( (Integer) session.getAttribute("userid"));
+        answer.setUserid(1);
         kcmService.adddaan(answer);
         return "addSuccess";
     }
@@ -151,8 +203,8 @@ public class KcmController {
         kcmService.addWentype(problemType);
         return "addSuccess";
     }
-    /*查询问题类型*/
 
+    /*查询问题类型*/
     @ResponseBody
     @RequestMapping("/queryWenType")
     public List queryWenType(){
@@ -161,7 +213,7 @@ public class KcmController {
     }
 
 
-
+    //回显信息
     @RequestMapping(value="/huixianwen")
     public String huixianwen(Integer wenid,Model model){
         Courseproblem courseproblem = kcmService.huixianwen(wenid);
@@ -169,7 +221,6 @@ public class KcmController {
         model.addAttribute("cp",courseproblem);
         return "kcm/updatewen.jsp";
     }
-
 
     //回显问题类型信息
     @RequestMapping(value="/huixianwentype")
@@ -223,9 +274,9 @@ public class KcmController {
     //修改答案点赞数
     @RequestMapping(value="/updatezan")
     @ResponseBody
-    public String updatezan(Integer resultid ){
-        kcmService.updatezan(resultid);
-        return "修改成功";
+    public String updatezan(Integer resultid ,Integer peopleid){
+        String flag= kcmService.updatezan(resultid,peopleid);
+        return flag;
     }
 
 
@@ -267,7 +318,7 @@ public class KcmController {
     public String tohuifu(Integer questionid,HttpServletRequest request){
         Courseproblem courseproblem=kcmService.tohuifu(questionid);
         request.getSession().setAttribute("co",courseproblem);
-        return "jsp/tohuifu";
+        return "jsp/tohuifu.jsp";
     }
 
 

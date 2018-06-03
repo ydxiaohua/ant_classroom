@@ -7,8 +7,9 @@ import com.jk.model.Xia;
 import java.util.List;
 import java.util.Map;
 
-
-
+/**
+ * Created by Administrator on 2018/5/17.
+ */
 public interface EchartsService {
 
 
@@ -30,7 +31,14 @@ public interface EchartsService {
 
     List<People> listuser(Integer userid);
 
-    String uolistuser(Integer  peopleid,String  peoplenickname,Integer  peoplesex,Integer   peopleage);
+    String uolistuser(Integer peopleid, String peoplenickname, Integer peoplesex, Integer peopleage);
 
     void upuserpass(String peoplepass, Integer peopleid);
+
+    void upimg(Integer uuid, String tuiguangphoto);
+
+    List<People> listuserzhuc();
+
+
+    List<People> peoyue(String name);
 }

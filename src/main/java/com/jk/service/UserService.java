@@ -1,10 +1,6 @@
 package com.jk.service;
 
-import com.jk.model.Menu;
-import com.jk.model.People;
-import com.jk.model.Role;
-import com.jk.model.User;
-
+import com.jk.model.*;
 
 import java.util.List;
 
@@ -45,4 +41,6 @@ public interface UserService {
     void addRoleMenu(Integer roleid, String idsStr);
 
     List<People> queryPeople();
+
+
 }

@@ -24,6 +24,7 @@
             parentField:'pid',//实体类中父节点id的属性名
             checkbox:"true",
             selectOnCheck:false,
+
             striped:true,
             ctrlselect:true,
         });

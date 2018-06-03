@@ -27,7 +27,22 @@
                             </tr>
                             <tr>
                                 <td>创建日期</td>
-                                <td><input type="text"  name="teacherdate" /></td>
+
+                                <td>
+                                    <a class='input-group date' id='datetimepicker1' >
+                                    <%--<input type="text"  name="" />--%>
+                                      <input onclick="Datetime()" type='text' name="teacherdate" class="form-control" id='nowdate' style="width: 150px; height: 30px;" />
+                                      <span class="input-group-addon" style="float: left; width: 50px; height: 30px;">
+                                           <span class="glyphicon glyphicon-calendar"></span>
+                                              </span>
+
+                                    </a>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>个人邮箱</td>
+                                <td><input type="text"  name="teachernote" /></td>
                             </tr>
 
                         </table>
@@ -41,6 +56,9 @@
         </div>
     </div>
 </div>
+
+
+
 
 
 <input type="button" value="添加" class="btn btn-success" onclick="addteacher()"/>
@@ -73,6 +91,18 @@
             {field:'teacherid',title:'id',width: 100},
             {field:'teachername',title:'讲师姓名',width: 100},
             {field:'teacherdate',title:'创建日期',width: 100},
+            {field:'teacherstate',title:'审核状态',width: 100,
+                formatter: function(value,row,index){
+                    if(value == 1){
+                        return"待审核";
+                    }else if(value==2){
+                        return"通过";
+                    }else if(value==3){
+                        return "未通过";
+
+                    }
+
+                }},
 
 
             {field:'act',title:'操作',width:100,
@@ -161,6 +191,26 @@
     }
 
 
+    //时间
+    function Datetime() {
+        $('#datetimepicker1').datetimepicker({
+            language: 'zh-CN',//显示中文
+            format: 'yyyy-mm-dd',//显示格式
+            minView: "month",//设置只显示到月份
+            initialDate: new Date(),
+            autoclose: true,//选中自动关闭
+            todayBtn: true,//显示今日按钮
+        });
+        //默认获取当前日期
+        var today = new Date();
+        var nowdate = (today.getFullYear()) + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+        //对日期格式进行处理
+        var date = new Date(nowdate);
+        var mon = date.getMonth() + 1;
+        var day = date.getDate();
+        var mydate = date.getFullYear() + "-" + (mon < 10 ? "0" + mon : mon) + "-" + (day < 10 ? "0" + day : day);
+        document.getElementById("nowdate").value = mydate;
+    }
 
 
 </script>

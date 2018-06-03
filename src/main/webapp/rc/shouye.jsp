@@ -1086,8 +1086,7 @@
          data:{ "username":userName, "userpass":pwd},
          dataType:"json",
          success:function(map){
-                       alert(map)
-                       alert(map)
+
                  if(map.mas=="success"){
                      location.href="shouye.jsp";
              }else if(map.mas=="erroruserpas"){
@@ -1439,22 +1438,38 @@
      }
  });
  $(function(){
-             if($("#userid").val()!=""&$("#userid").val()!=null&$("#userid").val()!='0'){
-                 $("#dlzcqh").html(
 
-                         ' <li  id="is-login-one">' +
-                         '                    <a href="http://www.itmayiedu.com/uc/letter" title="消息" id="headerMsgCountId">' +
-                         '                    <em     class="icon18 news-icon">&nbsp;</em></a>' +
-                         '                <q class="red-point" style="display: none">&nbsp;</q></li>' +
-                         '                <li  id="is-login-two">' +
-                         '                    <a   onclick="tiao()" title="">' +
-                         ' '+
-                         '                    <img src="http://www.itmayiedu.com/static/inxweb/img/avatar-boy.gif" width="30" height="30" class="vam picImg" alt=""> </a>' +
-                         '                    <a href="javascript:void(0)" title="退出" onclick="qkson();" class="ml5">退出</a></li>'
-                 )
+             if($("#userid").val()!=""&$("#userid").val()!=null&$("#userid").val()!='0'){
+                 $.ajax({
+                     url:"../raaac/listuser",
+                     type:"post",
+                     data:{"userid":$("#userid").val()},
+                     dataType:"json",
+                     success:function(data){
+                         $("#dlzcqh").html(
+
+                                 ' <li  id="is-login-one">' +
+                                 '                    <a href="http://www.itmayiedu.com/uc/letter" title="消息" id="headerMsgCountId">' +
+                                 '                    <em     class="icon18 news-icon">&nbsp;</em></a>' +
+                                 '                <q class="red-point" style="display: none">&nbsp;</q></li>' +
+                                 '                <li  id="is-login-two">' +
+                                 '                    <a   onclick="tiao()" title="">' +
+                                 ' '+
+                                 '                    <img src="'+data[0].peopleimg+'" width="30" height="30" class="vam picImg" alt=""> </a>' +
+                                 '                    <a href="javascript:void(0)" title="退出" onclick="qkson();" class="ml5">注销</a></li>'
+                         )
+                     }
+                 })
+
 
              }
          }
  )
+    function     qkson(){
+        alert("退出成功！请重新登录")
+        var searchUrl =encodeURI("shouye.jsp?uuid="+"qingchu");   //使用encodeURI编码
+
+        window.location.href =searchUrl;
+    }
 </script>
 </html>

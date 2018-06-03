@@ -601,9 +601,9 @@
                                 "\t\t\t\t\t\t\t</div>\n" +
                                 "\t\t\t\t\t\t\t<div class=\"of mt5\">\n" +
                                 "\t\t\t\t\t\t\t\t<span class=\"fr\"><font class=\"fsize12 c-999 ml5\"> <!-- <a href=\"\" class=\"c-blue mr10\">删除</a> --> "+this.resultdate+"</font></span> <span class=\"fl\"> <a href=\"javascript: void(0)\" title=\"回答\" class=\"noter-dy vam\" onclick=\"getCommentById(this,125)\">\n" +
-                                "\t\t\t\t\t\t\t\t\t\t<em class=\"icon18\">&nbsp;</em>(<span></span>)\n" +
-                                "\t\t\t\t\t\t\t\t\t</a> <tt class=\"noter-zan vam ml10\" title=\"赞一下\" onclick=\"zan("+this.resultid+")\">\n" +
-                                "\t\t\t\t\t\t\t\t\t\t<em class=\"icon18\">&nbsp;</em><input type='text' width='5' height='5' id='zan1' value='0'/>\n" +
+                                "\t\t\t\t\t\t\t\t\t\t<em class=\"icon18\">&nbsp;</em>(<span>0</span>)\n" +
+                                "\t\t\t\t\t\t\t\t\t</a> <tt class=\"noter-zan vam ml10\" title=\"赞一下\" onclick=\"zan("+this.resultid+","+this.peopleid+")\">\n" +
+                                "\t\t\t\t\t\t\t\t\t\t<em class=\"icon18\">&nbsp;</em>(<span id='zan'>"+this.num+"</span>)\n" +
                                 "\t\t\t\t\t\t\t\t\t</tt>\n" +
                                 "\t\t\t\t\t\t\t\t</span>\n" +
                                 "\t\t\t\t\t\t\t</div>\n" +
@@ -635,7 +635,9 @@
                         alert("程序出错");
                     }
                 })
+
             })
+
 
             function huifu(){
                 var a=$("[name='content']").val();
@@ -701,23 +703,35 @@
             type:"post",
             data:{"questionid":questionid},
             success:function(result){
-                location.href="<%=request.getContextPath()%>/kcmuser/tohuifu?questionid="+questionid;
+                location.href="/kcmuser/tohuifu?questionid="+questionid;
             }
         })
 
     }
 
-    function zan(resultid){
-        alert(resultid);
+    function zan(resultid,peopleid){
         $.ajax({
             url:"<%=request.getContextPath()%>/kcmuser/updatezan",//请求地址
-            data:{"resultid":resultid},
+            data:{"resultid":resultid,"peopleid":peopleid},
             type:"post",//设置请求方式
             dataType:"text",//返回数据的类型
-            success:function (data){
-              var a= $("#zan1").val(1);
-              alert(a)
-               alert("点赞成功");
+            success:function (flag){
+                if(flag==1){
+                    alert("已点过赞");
+                    location.href="<%=request.getContextPath()%>/jsp/tohuifu.jsp";
+                }
+                if(flag==2){
+                    alert("点赞成功");
+                    location.href="<%=request.getContextPath()%>/jsp/tohuifu.jsp";
+                }
+                if(flag==3){
+                    alert("取消点赞");
+                    location.href="<%=request.getContextPath()%>/jsp/tohuifu.jsp";
+                }
+                if(flag==4){
+                    alert("点赞成功");
+                    location.href="<%=request.getContextPath()%>/jsp/tohuifu.jsp";
+                }
             },
             error:function (){
                 alert("程序出错");

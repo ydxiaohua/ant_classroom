@@ -104,21 +104,25 @@ public class LogAspect {
        String servletPath=request.getServletPath();
  /*       System.err.println(servletPath);*/
 
-       User u= (User) request.getSession().getAttribute("user");
+       User u= (User) request.getSession().getAttribute("dbuser");
 
-    if(servletPath.equals("/user/loginuser") || servletPath=="/user/loginuser"){
+
+
+    if(servletPath.equals("/user/loginUser") || servletPath=="/user/loginuser"){
+
+        /*if(servletPath.equals("/user/loginUser")){*/
 
                 System.err.println("我是登陆调用");
 
-        Te user=new Te();
+                Te user=new Te();
 
-                System.err.println("u");
+                System.err.println(u);
 
                user.setName(u.getUsername());
 
                user.setZtid("登录人"+u.getUsername());
 
-              request.getSession().setAttribute("k",user.getName());
+               request.getSession().setAttribute("k",user.getName());
 
 
                mongoTemplate.save(user);

@@ -28,6 +28,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Created by Administrator on 2018/5/17.
+ */
 
 @Controller
 @RequestMapping("raaac")
@@ -83,7 +86,10 @@ public class EchartsController {
             liu.setType(0);
             mongoTemplate.save(liu);
     }
-
+    /**
+     * @return
+     * mongodb 定时查询数据到mysql中
+     */
     @Scheduled(cron ="0 0 3 * * ?")
     public   void   mongodblist(){
         Liu liu  =new Liu();
@@ -100,11 +106,10 @@ public class EchartsController {
         Update update = new Update().set("type",1);
         mongoTemplate.updateFirst(query2,update,Liu.class);
     }
-    @Scheduled(fixedRate = 6000)
+/*    @Scheduled(fixedRate = 6000)
     public void autosync() {
         System.out.print(".");
-    }
-
+    }*/
     @ResponseBody
     @RequestMapping("chaxxia")
     public  Map<String , Object>  chaxliu(){
@@ -251,12 +256,55 @@ public class EchartsController {
         return  "ok";
     }
     //上传图片（页面addEmpl.jsp）
-    @RequestMapping("upImg")
+    @RequestMapping("upimg")
     @ResponseBody
-    public String upImg(MultipartFile artImg, HttpServletRequest req){
-        String folderPath = req.getSession().getServletContext().getRealPath("/");
-        String folderName = "/upload/";
-        String str = UpLoadUtil.uploadImg(artImg, folderPath,folderName);
-        return  str;
+    public String upimg(Integer uuid, String tuiguangphoto){
+
+
+        echartsService.upimg(uuid,tuiguangphoto);
+        return  "ok";
+    }
+
+    @RequestMapping("userzhuc")
+    @ResponseBody
+    public Map userzhuc(){
+        Map<String , Object> map=new HashMap<String, Object>();
+        List<People>   people=echartsService.listuserzhuc();
+        Integer  ind=people.size();
+        String[]    setarr=new   String[ind];
+        Integer[]   intarr=new   Integer[ind];
+        for (int i = 0; i < people.size(); i++) {
+            People x=people.get(i);
+            String  a=x.getPeopledate();
+            setarr[i]=a;
+            Integer  b=x.getPeopleid();
+            intarr[i]=b;
+        }
+        map.put("succ", true);
+        map.put("leg", "['注册量']");
+        map.put("xax", setarr);
+        map.put("ser", intarr);
+        return map;
+    }
+    @RequestMapping("peoyue")
+    @ResponseBody
+    public Map peoyue(String  name){
+        Map<String , Object> map=new HashMap<String, Object>();
+        List<People>   people=echartsService.peoyue(name);
+        Integer  ind=people.size();
+        String[]    setarr=new   String[ind];
+        Integer[]   intarr=new   Integer[ind];
+        for (int i = 0; i < people.size(); i++) {
+            People x=people.get(i);
+            String  a=x.getPeopledate();
+            setarr[i]=a;
+            Integer  b=x.getPeopleid();
+            intarr[i]=b;
+        }
+        map.put("succ", true);
+        map.put("leg", "['注册量']");
+        map.put("xax", setarr);
+        map.put("ser", intarr);
+        return map;
     }
 }
