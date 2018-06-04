@@ -1,6 +1,8 @@
 package com.jk.controller;
 
 import com.alibaba.dubbo.common.json.JSONObject;
+import com.jk.model.Aop;
+import com.jk.model.Error;
 import com.jk.model.Comment;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.FindIterable;
@@ -73,7 +75,7 @@ public class CommentController {
     @ResponseBody
     @RequestMapping("deletecommon")
     public String deletecommon(String comcontent){
-        System.out.println(comcontent);
+
         Query q=new Query(new Criteria("comcontent").is(comcontent));
         mongoTemplate.remove(q,Comment.class);
         return "删除成功";
@@ -87,5 +89,39 @@ public class CommentController {
         List<Comment>  find = mongoTemplate.find(query, Comment.class);
         return find;
     }
+
+
+
+
+
+    //查询错误日志
+    @ResponseBody
+    @RequestMapping("queryusererr")
+    public List queryusererr(){
+
+        Query query= new Query();
+
+        List<Error> errors = mongoTemplate.find(query, Error.class);
+
+        System.out.println("error"+errors);
+
+        return errors;
+
+    }
+    //查询错误日志
+    @ResponseBody
+    @RequestMapping("queryuseraop")
+    public List queryuseraop(){
+
+        Query query= new Query();
+
+        List<Aop>  aop = mongoTemplate.find(query,Aop.class);
+
+        return aop;
+
+    }
+
+
+
 
 }

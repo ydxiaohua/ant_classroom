@@ -35,7 +35,7 @@
         var myChart = echarts.init(document.getElementById('maina'));
             // 添加点击事件
         var option = {
-            color: ['#3398DB'],
+            color: ['#3D3D3D',"#7D26CD"],
             title: {
                 text: ''
             },
@@ -55,18 +55,21 @@
                 data:le
             },
             xAxis: {
-                data:xax
+                data:xax,
+                max:5
             },
-            yAxis: {},
+            yAxis: {
+
+            },
             series: [{
                 name: '浏览量',
                 type: 'bar',
-                data: ser
+                data: ser,
+                barCategoryGap:"50%"
             }
             ]
         };
             myChart.on('click', function(param) {
-
                 chaxlit(param.name);
             });
         // 使用刚指定的配置项和数据显示图表。
@@ -75,50 +78,50 @@
     })
     })
         function    chaxlit(name){
-                $.ajax({
-                    url:"../raaac/peoyue",
-                    type:"post",
-                    data:{"name":name},
-                    dataType:"json",
-                    success:function(chu){
-                        le=chu.leg;
-                        xax=chu.xax;
-                        ser=chu.ser;
-                        // 基于准备好的dom，初始化echarts实例
-                        var myChart = echarts.init(document.getElementById('mainb'));
-                        // 指定图表的配置项和数据
-                        option = {
-                            title: {text: '月浏览量'},
-                            tooltip: {},
-                            legend: {
-                                data:le
-                            },
-                            xAxis: {
-                                type: 'category',
-                                data:xax
-                            },
-                            yAxis: {},
-                            series: [{
-                                type: 'line',
-                                data:ser,
-                                markLine: {
-                                    data: [
-                                        {type: 'average', name: '平均值'},  //所有数据的平均值
-                                        [{                          //取所有数据的最大值
-                                            symbol: 'none',
-                                            x: '90%',
-                                            yAxis: 'max'
-                                        }, {
-                                            symbol: 'circle',
-                                            label: { normal: { position: 'start', formatter: '最大值'}},}]
-                                    ]
-                                }
-                            }]
-                        };
-                        // 使用刚指定的配置项和数据显示图表。
-                        myChart.setOption(option);
-                    }
-                })
+            $.ajax({
+                url:"../raaac/peoyue",
+                type:"post",
+                data:{"name":name},
+                dataType:"json",
+                success:function(chu){
+                    le=chu.leg;
+                    xax=chu.xax;
+                    ser=chu.ser;
+                    // 基于准备好的dom，初始化echarts实例
+                    var myChart = echarts.init(document.getElementById('main2'));
+                    // 指定图表的配置项和数据
+                    option = {
+                        title: {text: '月浏览量'},
+                        tooltip: {},
+                        legend: {
+                            data:le
+                        },
+                        xAxis: {
+                            type: 'category',
+                            data:xax
+                        },
+                        yAxis: {},
+                        series: [{
+                            type: 'line',
+                            data:ser,
+                            markLine: {
+                                data: [
+                                    {type: 'average', name: '平均值'},  //所有数据的平均值
+                                    [{                          //取所有数据的最大值
+                                        symbol: 'none',
+                                        x: '90%',
+                                        yAxis: 'max'
+                                    }, {
+                                        symbol: 'circle',
+                                        label: { normal: { position: 'start', formatter: '最大值'}},}]
+                                ]
+                            }
+                        }]
+                    };
+                    // 使用刚指定的配置项和数据显示图表。
+                    myChart.setOption(option);
+                }
+            })
         }
     </script>
 </body>

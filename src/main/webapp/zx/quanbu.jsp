@@ -107,25 +107,25 @@
             </h1>
             <div class="h-r-nsl">
                 <ul class="nav">
-                    <li><a href="/"
+                    <li><a href="../courseInfo/index.jsp"
                            title="首页"
                     >首页</a></li>
-                    <li><a href="/front/showcoulist"
-                           title="课程"
-                    >课程</a></li>
-                    <li><a href="http://cn.mikecrm.com/kz8uPv0"
+                    <li><a href="../twl/baoming.jsp"
                            title="培训"
                            target="_blank">培训</a></li>
-                    <li><a href="/lc/locaMemberRecharge"
+                    <li><a href="../zx/quanbu.jsp"
+                           title="课程"
+                    >课程</a></li>
+                    <li><a href="../twl/huiyuan.jsp"
                            title="会员"
                     >会员</a></li>
-                    <li><a href="/questions/list"
+                    <li><a href="../jsp/wenda.jsp"
                            title="问答"
                     >问答</a></li>
-                    <li><a href="http://bbs.itmayiedu.com"
+                    <li><a href="http://www.itmayiedu.comhttp://bbs.itmayiedu.com"
                            title="社区"
                     >社区</a></li>
-                    <li><a href="https://fir.im/mayiketang"
+                    <li><a href="http://www.itmayiedu.comhttps://fir.im/mayiketang"
                            title="APP"
                            target="_blank">APP</a></li>
                 </ul>
@@ -816,13 +816,19 @@
 
 
     function submitcourse(){
+
        var name= $("#nameid").val();
+
         $.ajax({
+
             url:"<%=request.getContextPath()%>/CourseController/search",
 
             dataType : "json",//数据格式 
+
             type : "post",//请求方式
+
             data:{"name":name},
+
             async : false,//是否异步请求
 
             success:function (list){
@@ -830,7 +836,9 @@
                 var aa=  "免费";
                 $(list).each(function (){
                     if (this.ynvip==1){
+
                         span+='<li><div class="cc-l-wrap"><section class="course-img"><img xsrc="'+this.tuiguangphoto+'" src="'+this.tuiguangphoto+'" class="img-responsive" alt="SpringCloud"><div class="cc-mask"><a href="<%=request.getContextPath()%>/index/queryCourseAllOrId?courseid='+this.courseid+'" title="开始学习" class="comm-btn c-btn-1">开始学习</a></div></section><h3 class="hLh30 txtOf mt10"><a href="http://www.itmayiedu.com/front/couinfo/91/0" title="SpringCloud" class="course-title fsize18 c-333">'+this.coursename+'</a></h3><section class="mt10 hLh20 of"><span class="fr jgTag bg-green"><tt class="c-fff fsize12 f-fA">免费</tt></span><span class="fl jgAttr c-ccc f-fA"><tt class="c-999 f-fA">'+this.lookcode+'人学习</tt></span></section></div></li>'
+
                     }else {
                         span+='<li><div class="cc-l-wrap"><section class="course-img"><img xsrc="'+this.tuiguangphoto+'" src="'+this.tuiguangphoto+'" class="img-responsive" alt="SpringCloud"><div class="cc-mask"><a href="<%=request.getContextPath()%>/index/queryCourseAllOrId?courseid='+this.courseid+'" title="开始学习" class="comm-btn c-btn-1">开始学习</a></div></section><h3 class="hLh30 txtOf mt10"><a href="http://www.itmayiedu.com/front/couinfo/91/0" title="SpringCloud" class="course-title fsize18 c-333">'+this.coursename+'</a></h3><section class="mt10 hLh20 of"><span class="fr jgTag bg-orange"><tt class="c-fff fsize14 f-fG">会员</tt></span><span class="fl jgAttr c-ccc f-fA"><tt class="c-999 f-fA">'+this.lookcode+'人学习</tt></span></section></div></li>'
                     }          });

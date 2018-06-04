@@ -55,7 +55,8 @@
                 data:le
             },
             xAxis: {
-                data:xax
+                data:xax,
+                max:5
             },
             yAxis: {},
             series: [{

@@ -103,25 +103,25 @@
             </h1>
             <div class="h-r-nsl">
                 <ul class="nav">
-                    <li><a href="/"
+                    <li><a href="../courseInfo/index.jsp"
                            title="首页"
                     >首页</a></li>
-                    <li><a href="/front/showcoulist"
-                           title="课程"
-                    >课程</a></li>
-                    <li><a href="http://cn.mikecrm.com/kz8uPv0"
+                    <li><a href="../twl/baoming.jsp"
                            title="培训"
                            target="_blank">培训</a></li>
-                    <li><a href="/lc/locaMemberRecharge"
+                    <li><a href="../zx/quanbu.jsp"
+                           title="课程"
+                    >课程</a></li>
+                    <li><a href="../twl/huiyuan.jsp"
                            title="会员"
                     >会员</a></li>
-                    <li><a href="/questions/list"
+                    <li><a href="../jsp/wenda.jsp"
                            title="问答"
                     >问答</a></li>
-                    <li><a href="http://bbs.itmayiedu.com"
+                    <li><a href="http://www.itmayiedu.comhttp://bbs.itmayiedu.com"
                            title="社区"
                     >社区</a></li>
-                    <li><a href="https://fir.im/mayiketang"
+                    <li><a href="http://www.itmayiedu.comhttps://fir.im/mayiketang"
                            title="APP"
                            target="_blank">APP</a></li>
                 </ul>

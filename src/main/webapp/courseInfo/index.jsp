@@ -118,26 +118,27 @@
                 </a>
             </h1>
             <div class="h-r-nsl">
+
                 <ul class="nav">
-                    <li><a href="index.htm" tppabs="http://www.itmayiedu.com/"
+                    <li><a href="../courseInfo/index.jsp"
                            title="首页"
                     >首页</a></li>
-                    <li><a href="showcoulist.htm" tppabs="http://www.itmayiedu.com/front/showcoulist"
-                           title="课程"
-                    >课程</a></li>
-                    <li><a href="javascript:if(confirm('http://cn.mikecrm.com/kz8uPv0  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://cn.mikecrm.com/kz8uPv0'" tppabs="http://cn.mikecrm.com/kz8uPv0"
+                    <li><a href="../twl/baoming.jsp"
                            title="培训"
                            target="_blank">培训</a></li>
-                    <li><a href="locaMemberRecharge.htm" tppabs="http://www.itmayiedu.com/lc/locaMemberRecharge"
+                    <li><a href="../zx/quanbu.jsp"
+                           title="课程"
+                    >课程</a></li>
+                    <li><a href="../twl/huiyuan.jsp"
                            title="会员"
                     >会员</a></li>
-                    <li><a href="list.htm" tppabs="http://www.itmayiedu.com/questions/list"
+                    <li><a href="../jsp/wenda.jsp"
                            title="问答"
                     >问答</a></li>
-                    <li><a href="javascript:if(confirm('http://bbs.itmayiedu.com/  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='http://bbs.itmayiedu.com/'" tppabs="http://bbs.itmayiedu.com/"
+                    <li><a href="http://www.itmayiedu.comhttp://bbs.itmayiedu.com"
                            title="社区"
                     >社区</a></li>
-                    <li><a href="javascript:if(confirm('https://fir.im/mayiketang  \n\n���ļ��޷��� Teleport Ultra ����, ��Ϊ ����һ�����·���ⲿ������Ϊ������ʼ��ַ�ĵ�ַ��  \n\n�����ڷ������ϴ���?'))window.location='https://fir.im/mayiketang'" tppabs="https://fir.im/mayiketang"
+                    <li><a href="http://www.itmayiedu.comhttps://fir.im/mayiketang"
                            title="APP"
                            target="_blank">APP</a></li>
                 </ul>
@@ -158,8 +159,8 @@
                     <li class="h-r-user undis" id="is-login-two"><a
                             href="index.htm" tppabs="http://www.itmayiedu.com/uc/index" title=""> <img
                             src="avatar-boy.gif" tppabs="http://www.itmayiedu.com/static/inxweb/img/avatar-boy.gif" width="30"
-                            height="30" class="vam picImg" alt=""> <!--<span
-						class="vam disIb" id="userName"></span>-->
+                            height="30" class="vam picImg" alt="">
+
                     </a> <a href="javascript:void(0)" title="退出" onclick="exit();"
                             class="ml5">退出</a></li>
                     <!-- /未登录显示第1 li；登录后显示第2，3 li -->
@@ -207,15 +208,15 @@
             </section>
             <nav class="mw-nav">
                 <ul class="clearfix">
-                    <li><a href="index.jsp"
+                    <li><a href="http://www.itmayiedu.com/"
                            title="首页"
                     >首页</a></li>
-                    <li><a href="http://www.itmayiedu.comhttp://cn.mikecrm.com/kz8uPv0"
-                           title="培训"
-                           target="_blank">培训</a></li>
                     <li><a href="http://www.itmayiedu.com/front/showcoulist"
                            title="课程"
                     >课程</a></li>
+                    <li><a href="http://www.itmayiedu.comhttp://cn.mikecrm.com/kz8uPv0"
+                           title="培训"
+                           target="_blank">培训</a></li>
                     <li><a href="http://www.itmayiedu.com/lc/locaMemberRecharge"
                            title="会员"
                     >会员</a></li>
@@ -286,7 +287,7 @@
         })
     </script>
     <!-- 公共头引入 -->
-    <script>$(function(){var str = '<section style="color: #666;position:absolute;left:50%;bottom:20px;z-index:7;margin-left:-80px;">';str+='<span>Powered by</span>';str+='<a href="http://www.inxedu.com" target="_blank" title="因酷教育软件" style="margin-left: 2px;color: #666;">因酷教育软件</a>';str+='</section>';$("body").append(str); });</script>
+    <script>$(function(){var str = '<section style="color: #626646;position:absolute;left:50%;bottom:20px;z-index:7;margin-left:-80px;">';str+='<span>Powered by</span>';str+='<a href="http://www.inxedu.com" target="_blank" title="因酷教育软件" style="margin-left: 2px;color: #666;">因酷教育软件</a>';str+='</section>';$("body").append(str); });</script>
     <div class="i-slide">
         <section>
             <!-- 如果需要导航按钮 -->
@@ -294,31 +295,9 @@
                 class="arrow-right s-arrow" href="javascript:void(0)"></a>
             <!-- 图片位置 -->
             <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide"
-                         style="background: #fafafa;;">
-                        <a target="_blank"
-                           href="https://mp.weixin.qq.com/s?__biz=MzUzNDQwNTI5OA==&mid=2247483676&idx=1&sn=0ab157709cf2af77ef70271e19524ef6&chksm=fa9408c1cde381d7288816e4a4ed63b17e4159a0dc40afaa41321ca029ac91d4fd77cacd4b63&mpshare=1&scene=23&srcid=05112wBs5jvYfiOUSauwCBbH#rd">
-                            <img class="imgload" src="http://www.itmayiedu.com/images/upload/image/20180511/1525971349741.png"
-                                 alt="首页banner图片02">
-                        </a>
-                    </div>
-                    <div class="swiper-slide"
-                         style="background: #fafafa;;">
-                        <a target="_blank"
-                           href="https://ke.qq.com/course/273548?tuin=2663a60b">
-                            <img class="imgload" src="http://www.itmayiedu.com/images/upload/image/20180511/1525971495193.png"
-                                 alt="首页banner图片04">
-                        </a>
-                    </div>
-                    <div class="swiper-slide"
-                         style="background: #fafafa;;">
-                        <a target="_blank"
-                           href="http://www.itmayiedu.com/lc/locaMemberRecharge">
-                            <img class="imgload" src="http://www.itmayiedu.com/images/upload/image/20180514/1526270493681.png"
-                                 alt="蚂蚁课堂VIP">
-                        </a>
-                    </div>
+                <div class="swiper-wrapper" id="lunbotu">
+
+
                 </div>
             </div>
             <!-- 如果需要分页器 -->
@@ -394,27 +373,7 @@
             src="http://www.itmayiedu.com/static/inxweb/front/index_theme_color.js"></script>
     <!-- 换肤 -->
     <script>
-        $(function() {
-            /*			if(otherAda()=='pc'){
-             $(".i-slide").addClass('i-slides');
-             $("#header").addClass('headers');
-             }*/
-            sSwiperFun(); //幻灯片调取
-            upSlideFun("#iQuestion"); //向上滚动互动
-            scrollLoad(); //响应滚动加载课程图片
-            $(".boutiqueCourse").click();//网校课程-精品课程
-            huanyihuan();
-            studentDynamic();//学生动态
 
-            var uri = window.location.search;
-            var val = "msg";
-            var re = new RegExp("" + val + "=([^&?]*)", "ig");
-            var msg = ((uri.match(re)) ? (uri.match(re)[0]
-                    .substr(val.length + 1)) : null);
-            if (msg != null && msg != '' && msg == 'LimitLogin') {
-                dialog('提示信息', "您的帐号在其他地点登录，请重新登录", 1);
-            }
-        });
     </script>
     <!-- 公共底引入 -->
     <link href="http://www.itmayiedu.com/static/inxweb/css/qq.css " rel="stylesheet">
@@ -874,7 +833,9 @@ function tiaocourseinfo(courseid){
             }
         });
     }
-
+    $(function() {
+        bnaAll();
+    })
     function bnaAll(obj) {
         $.ajax({
             url :"<%=request.getContextPath()%>/index/AllCourse",
@@ -957,6 +918,42 @@ function tiaocourseinfo(courseid){
             }
         });
     }
+    $(function(){
+        var url = location.search;
+        var hid = url.split( "=" );
+        var  searchText =decodeURI(hid[1]);   //decodeURI解码
+        if(searchText=="qingchu"){
+            $("#userid").val("0")
+        }
+    });
+    $(function(){
+
+            if($("#userid").val()!=""&$("#userid").val()!=null&$("#userid").val()!='0'){
+                $.ajax({
+                    url:"../raaac/listuser",
+                    type:"post",
+                    data:{"userid":$("#userid").val()},
+                    dataType:"json",
+                    success:function(data){
+                        $("#dlzcqh").html(
+
+                            ' <li  id="is-login-one">' +
+                            '                    <a href="http://www.itmayiedu.com/uc/letter" title="消息" id="headerMsgCountId">' +
+                            '                    <em     class="icon18 news-icon">&nbsp;</em></a>' +
+                            '                <q class="red-point" style="display: none">&nbsp;</q></li>' +
+                            '                <li  id="is-login-two">' +
+                            '                    <a   onclick="tiao()" title="">' +
+                            ' '+
+                            '                    <img src="'+data[0].peopleimg+'" width="30" height="30" class="vam picImg" alt=""> </a>' +
+                            '                    <a href="javascript:void(0)" title="退出" onclick="qkson();" class="ml5">注销</a></li>'
+                        )
+                    }
+                })
+
+
+            }
+        }
+    )
 
     /**
      * 执行登录
@@ -974,10 +971,14 @@ function tiaocourseinfo(courseid){
             success:function(map){
 
                 if(map.mas=="success"){
-                    location.href="index.jsp";
+                    location.href="../courseInfo/index.jsp";
+
                 }else if(map.mas=="erroruserpas"){
+
                     alert("账号或密码错误");
+
                 }else if(map.mas=="error"){
+
                     alert("账号不存在")
                 }
             },
@@ -1096,40 +1097,33 @@ function tiaocourseinfo(courseid){
             }
         });
     }
-    $(function(){
 
-            if($("#userid").val()!=""&$("#userid").val()!=null&$("#userid").val()!='0'){
-                $.ajax({
-                    url:"../raaac/listuser",
-                    type:"post",
-                    data:{"userid":$("#userid").val()},
-                    dataType:"json",
-                    success:function(data){
-                        $("#dlzcqh").html(
-
-                            ' <li  id="is-login-one">' +
-                            '                    <a href="http://www.itmayiedu.com/uc/letter" title="消息" id="headerMsgCountId">' +
-                            '                    <em     class="icon18 news-icon">&nbsp;</em></a>' +
-                            '                <q class="red-point" style="display: none">&nbsp;</q></li>' +
-                            '                <li  id="is-login-two">' +
-                            '                    <a   onclick="tiao()" title="">' +
-                            ' '+
-                            '                    <img src="'+data[0].peopleimg+'" width="30" height="30" class="vam picImg" alt=""> </a>' +
-                            '                    <a href="javascript:void(0)" title="退出" onclick="qkson();" class="ml5">注销</a></li>'
-                        )
-                    }
-                })
-
-
-            }
-        }
-    )
-    function     qkson(){
+    function  qkson(){
         alert("退出成功！请重新登录")
         var searchUrl =encodeURI("../courseInfo/index.jsp?uuid="+"qingchu");   //使用encodeURI编码
 
         window.location.href =searchUrl;
     }
+
+    $.ajax({
+        url:'<%=request.getContextPath()%>/index/queryIndexImg',
+        type:'get',
+        dataType:'json',
+        success:function(data){
+            var indeximg="";
+            for(var i = 0; i < data.length; i++) {
+                indeximg+='<div class="swiper-slide"'
+                    +'style="background: #fafafa;;">'
+                    +'<a target="_blank"'
+                    +'href="http://www.itmayiedu.com/lc/locaMemberRecharge">'
+                    +'<img class="imgload" src="'+data[i].img+'"'
+                    +'alt="蚂蚁课堂VIP">'
+                    +'</a>'
+                    +'</div>';
+            }
+            $("#lunbotu").html(indeximg);
+        }
+    });
 </script>
 </body>
 <input type="hidden" id="userid" value="${pid}"/>

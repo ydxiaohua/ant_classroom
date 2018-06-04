@@ -174,7 +174,30 @@
             success:function(ok){
 
                 userlist();
+                if($("#userid").val()!=""&$("#userid").val()!=null&$("#userid").val()!='0'){
+                    $.ajax({
+                        url:"../raaac/listuser",
+                        type:"post",
+                        data:{"userid":$("#userid").val()},
+                        dataType:"json",
+                        success:function(data){
+                            $("#dlzcqh").html(
 
+                                ' <li  id="is-login-one">' +
+                                '                    <a href="http://www.itmayiedu.com/uc/letter" title="消息" id="headerMsgCountId">' +
+                                '                    <em     class="icon18 news-icon">&nbsp;</em></a>' +
+                                '                <q class="red-point" style="display: none">&nbsp;</q></li>' +
+                                '                <li  id="is-login-two">' +
+                                '                    <a   onclick="tiao()" title="">' +
+                                ' '+
+                                '                    <img src="'+data[0].peopleimg+'" width="30" height="30" class="vam picImg" alt=""> </a>' +
+                                '                    <a href="javascript:void(0)" title="退出" onclick="qkson();" class="ml5">退出</a></li>'
+                            )
+                        }
+                    })
+
+
+                }
             },error:function(){
                 alert("修改错误")
             }

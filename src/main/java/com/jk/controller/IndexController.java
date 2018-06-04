@@ -13,6 +13,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -63,31 +64,7 @@ public class IndexController {
         return list;
     }
 
-    @RequestMapping("/queryImg")
-    @ResponseBody
-    public List<Img> queryImg(){
-        List<Img> list = indexService.queryImg();
-        return list;
-    }
 
-    @RequestMapping("/addphoto")
-    @ResponseBody
-    public String addpetphoto(@RequestParam("uploadFile") CommonsMultipartFile petPhoto, HttpServletRequest request) {
-        // 改名 转存 获得新的文件名
-        System.out.println(123);
-        String newFileName = MyUtil.upload(request, petPhoto);
-
-        return newFileName;
-    }
-
-    @RequestMapping("/addImg")
-    @ResponseBody
-    public String addImg(Img img){
-
-        img.setImgdate(String.valueOf(new Date()));
-        indexService.addImg(img);
-        return "1";
-    }
 
     //查找一条数据
     @ResponseBody
@@ -190,12 +167,87 @@ public class IndexController {
         out.close();
         return "courseInfo/dg"+dgid+".html";
     }
-    /*@RequestMapping("/queryDGinfo")
+
+
+
+    //轮播图所有操作
+    @RequestMapping("/queryImg")
     @ResponseBody
-    public List queryDGinfo(Integer dgid){
-        List<DaGang>  list = indexService.queryDagang(dgid);
+    public List<Img> queryImg(){
+        List<Img> list = indexService.queryImg();
         return list;
-    }*/
+    }
+
+
+    @RequestMapping("/addImg")
+    @ResponseBody
+    public String addImg(Img img){
+
+        img.setImgdate(sdf.format(new Date()));
+        img.setImgstate("1");
+        indexService.addImg(img);
+        return "1";
+    }
+
+    @RequestMapping("/deleteImg")
+    @ResponseBody
+    public String deleteImg(Integer imgid){
+
+        indexService.deleteImg(imgid);
+        return "1";
+    }
+
+    //7.查找一条数据
+    @RequestMapping("/huixianImg")
+    public  String huixianImg(Integer imgid,HttpSession session){
+
+        Img img =   indexService.huixianImg(imgid);
+        session.setAttribute("img",img);
+        return "sl/updateimg.jsp";
+
+    }
+    //修改的方法
+    @RequestMapping("/updateImg")
+    @ResponseBody
+    public  String updateImg(Img img){
+        img.setImgdate(sdf.format(new Date()));
+        indexService.updateImg(img);
+        return "1";
+
+    }
+    @RequestMapping("/ShowLunBoImg")
+    @ResponseBody
+    public  String ShowLunBoImg(Integer imgid){
+        Integer imgcount=indexService.queryShowImgNum();
+        if(imgcount>=5){
+            return "2";
+
+        }else{
+            indexService.ShowLunBoImg(imgid);
+            return "1";
+        }
+    }
+    @RequestMapping("/HideLunBoImg")
+    @ResponseBody
+    public  String HideLunBoImg(Integer imgid){
+        Integer imgcount=indexService.queryShowImgNum();
+
+        if(imgcount<=1){
+            return "2";
+        }else {
+            indexService.HideLunBoImg(imgid);
+            return "1";
+
+        }
+    }
+
+    @RequestMapping("/queryIndexImg")
+    @ResponseBody
+    public List<Img> queryIndexImg(){
+        List<Img> list = indexService.queryIndexImg();
+        System.out.println(list);
+        return list;
+    }
 
 
 

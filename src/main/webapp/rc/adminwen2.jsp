@@ -43,7 +43,29 @@
          },5000)*/
 
     });
-</script> <header id="header"> <section class="container"> <a href='http://cn.mikecrm.com/kz8uPv0' target="_blank"> </a> <h1 id="logo"> <a href="http://www.itmayiedu.com/" title=""> <img src="http://www.itmayiedu.com/images/upload/websiteLogo/20161107/1478524048493.png" width="100%" alt=""> </a> </h1> <div class="h-r-nsl"> <ul class="nav"> <li><a href="/" title="首页">首页</a></li> <li><a href="http://cn.mikecrm.com/kz8uPv0" title="培训" target="_blank">培训</a></li> <li><a href="/front/showcoulist" title="课程">课程</a></li> <li><a href="/lc/locaMemberRecharge" title="会员">会员</a></li> <li><a href="/questions/list" title="问答">问答</a></li> <li><a href="http://bbs.itmayiedu.com" title="社区">社区</a></li> <li><a href="https://fir.im/mayiketang" title="APP" target="_blank">APP</a></li> </ul> <ul class="h-r-login">
+</script> <header id="header"> <section class="container"> <a href='http://cn.mikecrm.com/kz8uPv0' target="_blank"> </a> <h1 id="logo"> <a href="http://www.itmayiedu.com/" title=""> <img src="http://www.itmayiedu.com/images/upload/websiteLogo/20161107/1478524048493.png" width="100%" alt=""> </a> </h1> <div class="h-r-nsl"> <ul class="nav">
+    <li><a href="../courseInfo/index.jsp"
+           title="首页"
+    >首页</a></li>
+    <li><a href="../twl/baoming.jsp"
+           title="培训"
+           target="_blank">培训</a></li>
+    <li><a href="../zx/quanbu.jsp"
+           title="课程"
+    >课程</a></li>
+    <li><a href="../twl/huiyuan.jsp"
+           title="会员"
+    >会员</a></li>
+    <li><a href="../jsp/wenda.jsp"
+           title="问答"
+    >问答</a></li>
+    <li><a href="http://www.itmayiedu.comhttp://bbs.itmayiedu.com"
+           title="社区"
+    >社区</a></li>
+    <li><a href="http://www.itmayiedu.comhttps://fir.im/mayiketang"
+           title="APP"
+           target="_blank">APP</a></li>
+</ul> <ul class="h-r-login">
   <span id="dlzcqh">
   <li class="undis" id="no-login"><a href="javascript:lrFun()" title="登录"> <em class="icon18 login-icon">&nbsp;</em><span class="vam ml5">登录</span> </a> | <a href="javascript:lrFun(2)" title="注册"> </em><span class="vam ml5">注册</span> </a></li>
   </span>

@@ -18,10 +18,6 @@ public interface IndexService {
 
     List<Course> AllCourse();
 
-    List<Img> queryImg();
-
-    void addImg(Img img);
-
     Course queryCourseAllOrId(Integer courseid);
 
     void updateLookcode(Integer courseid);
@@ -42,4 +38,22 @@ public interface IndexService {
     Course queryDGinfo(Integer courseid, Integer dgid);
 
     String queryDgidOrVideo(Integer dgid);
+
+    List<Img> queryImg();
+
+    void addImg(Img img);
+
+    void deleteImg(Integer imgid);
+
+    Img huixianImg(Integer imgid);
+
+    void updateImg(Img img);
+
+    void ShowLunBoImg(Integer imgid);
+
+    void HideLunBoImg(Integer imgid);
+
+    Integer queryShowImgNum();
+
+    List<Img> queryIndexImg();
 }

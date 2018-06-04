@@ -108,9 +108,9 @@ public class LogAspect {
 
 
 
-    if(servletPath.equals("/user/loginUser") || servletPath=="/user/loginuser"){
+    /*if(servletPath.equals("/user/loginUser") || servletPath=="/user/loginuser"){*/
 
-        /*if(servletPath.equals("/user/loginUser")){*/
+       if(servletPath.equals("/user/loginUser")){
 
                 System.err.println("我是登陆调用");
 
@@ -148,7 +148,7 @@ public class LogAspect {
 
         HttpServletRequest request= ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
 
- /*       err.setErrorvalue(jp.toString());*/
+        err.setErrorvalue(jp.toString());
 
         mongoTemplate.save(err);
 

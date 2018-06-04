@@ -2,12 +2,11 @@ package com.jk.model;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.io.Serializable;
 
 @Document(collection = "UserErr")
-public class Error implements Serializable {
+public class Error{
 
-      private String errorvalue;
+    private String errorvalue;
 
     public String getErrorvalue() {
         return errorvalue;
@@ -16,7 +15,6 @@ public class Error implements Serializable {
     public void setErrorvalue(String errorvalue) {
         this.errorvalue = errorvalue;
     }
-
 
     @Override
     public String toString() {
