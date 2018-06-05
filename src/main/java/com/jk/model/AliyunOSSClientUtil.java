@@ -190,7 +190,11 @@ public class AliyunOSSClientUtil {
         }  
         if(".xml".equalsIgnoreCase(fileExtension)) {  
             return "text/xml";  
-        }  
+        }
+        if(".mp4".equalsIgnoreCase(fileExtension)) {
+            return "video/mp4";
+        }
+
         //默认返回类型  
         return "image/jpeg";  
     }  

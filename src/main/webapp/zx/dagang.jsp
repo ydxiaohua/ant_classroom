@@ -29,10 +29,6 @@
                             <td><input type="text"   name="dgname" class="form-control"/></td>
                         </tr>
                         <tr>
-                            <td>创建时间</td>
-                            <td><input type="text"  name="pdate" class="form-control"/></td>
-                        </tr>
-                        <tr>
                             <td>所属课程</td>
                             <td>
                          <select name="courseid" class="form-control">

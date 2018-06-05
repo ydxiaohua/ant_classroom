@@ -182,7 +182,7 @@
                     alert("请补全信息!");
                 }
                 if(zz == "bbbb"){
-                    alert("预约成功!");
+
                     location.reload();
                 }
             }

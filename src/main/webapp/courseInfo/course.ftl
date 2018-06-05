@@ -315,8 +315,12 @@
 
                         <video controls="controls" autoplay="autoplay" class="c-v-pic-wrap">
 
-                            <source src="../tupian/${courseinfo.videotv}" type="video/ogg">
-                            <source src="../tupian/${courseinfo.videotv}" type="video/mp4">
+<#--                            <source src="../tupian/${courseinfo.videotv}" type="video/ogg">
+                            <source src="../tupian/${courseinfo.videotv}" type="video/mp4">-->
+
+              <source src="${courseinfo.videotv}" type="video/ogg">
+              <source src="${courseinfo.videotv}" type="video/mp4">
+
                             您的浏览器不支持此种视频格式。
 
                         </video>
@@ -520,13 +524,14 @@
                                 <ul style="height: auto;">
                                     <li>
                                         <div class="u-face">
-                                            <a href="http://www.itmayiedu.com/front/teacher/85"> <img src="http://www.itmayiedu.com/images/upload/teacher/20170119/1484829619387.png" width="50"
+                                            <a href="http://www.itmayiedu.com/front/teacher/85"> <img src="
+https://xiaohuaa.oss-cn-beijing.aliyuncs.com/img/5da94febc7a348c8a2a249529a460f26.jpg" width="50"
                                                                                                       height="50" alt="">
                                             </a>
                                         </div>
                                         <section class="hLh30 txtOf">
                                             <a class="c-333 fsize16 fl"
-                                               href="http://www.itmayiedu.com/front/teacher/85">余胜军</a>
+                                               href="http://www.itmayiedu.com/front/teacher/85">小花</a>
                                         </section>
                                         <section class="hLh20 txtOf">
                                             <span class="c-999">蚂蚁课堂创始人</span>
@@ -784,7 +789,9 @@
 </div>
 <script>
 function addComment(){
+
     var comcontent=$("#commentContent").val();
+
     $.ajax({
         url:"../index/addHuiFuPing",
         type:"post",

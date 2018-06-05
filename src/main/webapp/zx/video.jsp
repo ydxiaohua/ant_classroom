@@ -42,12 +42,7 @@
 
                             </td>
                         </tr>
-                        <tr>
-                            <td>创建时间</td>
-                            <td><input type="text" name="vdate"></td>
-                        </tr>
-
-                        <tr>
+                       <tr>
                             <td>视频</td>
                             <td>
                                 <input type="hidden" name="videotv" id="photo3"><br>
@@ -205,7 +200,7 @@
             enctype: 'multipart/form-data',
             //allowedPreviewTypes : ['image', 'html', 'text', 'video', 'audio', 'flash'],//预览类型
             //allowedFileTypes: ['image', 'video', 'flash'],	//文件类型
-            allowedFileExtensions : ["jpg", "png","gif"],	//上传文件格式
+            allowedFileExtensions : ["jpg", "png","gif","mP4"],	//上传文件格式
             msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
             dropZoneTitle: "请通过拖拽图片文件放到这里",
             dropZoneClickTitle: "或者点击此区域添加图片",

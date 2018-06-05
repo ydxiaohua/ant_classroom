@@ -28,6 +28,7 @@ import javax.mail.*;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -35,6 +36,8 @@ import java.util.*;
 @Controller
 @RequestMapping("/CourseController")
 public class CourseController {
+
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
     @Autowired
     CourseService courseService;
@@ -118,8 +121,18 @@ public class CourseController {
     //新增大纲
     @RequestMapping("/adddagang")
     @ResponseBody
-    public  String adddagang(DaGang dagang){
-        dagang.setUid(1);
+    public  String adddagang(DaGang dagang,HttpSession session){
+
+        User user = (User) session.getAttribute("dbuser");
+
+        Integer uid = user.getUserid();
+
+        System.out.println("新增大纲"+uid);
+
+        dagang.setUid(uid);
+
+        dagang.setPdate(sdf.format(new Date()));
+
         courseService.adddagang(dagang);
 
         return "addsuccess";
@@ -383,9 +396,15 @@ public class CourseController {
     //新增视频
     @RequestMapping("/addvideo")
     @ResponseBody
-    public String addvideo(Video video) {
+    public String addvideo(Video video,HttpSession session) {
 
-        video.setUserid(1);
+        User user = (User) session.getAttribute("dbuser");
+
+        Integer uid = user.getUserid();
+
+        video.setUserid(uid);
+
+        video.setVdate(sdf.format(new Date()));
 
         courseService.addvideo(video);
 

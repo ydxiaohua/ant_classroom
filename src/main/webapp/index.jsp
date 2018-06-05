@@ -141,7 +141,7 @@
             expandIcon: "glyphicon glyphicon-stop",
             collapseIcon: "glyphicon glyphicon-unchecked",
             nodeIcon: "glyphicon glyphicon-user",
-            color: "#66FFFF",
+            color: "#0000CC",
             backColor: "purple",
             onhoverColor: "orange",
             borderColor: "red",

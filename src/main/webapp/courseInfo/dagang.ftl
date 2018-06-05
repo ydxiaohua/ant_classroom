@@ -315,8 +315,8 @@
 
                         <video controls="controls" autoplay="autoplay" class="c-v-pic-wrap">
 
-                            <source src="../tupian/${dginfo.videotv}" type="video/ogg">
-                            <source src="../tupian/${dginfo.videotv}" type="video/mp4">
+                            <source src="${dginfo.videotv}" type="video/ogg">
+                            <source src="${dginfo.videotv}" type="video/mp4">
                             您的浏览器不支持此种视频格式。
 
                         </video>
@@ -497,7 +497,7 @@
                                 <div class="paging">
                                     <a href="javascript:jumpPage(1);" title="">首</a>
                                     <a id="backpage" href="javascript:jumpPage(2);" title="">&lt;</a>
-                                    <span id="nowpage"></span>
+                                    <span id="nowpage2"></span>
                                     <a id="nextpage" href="javascript:jumpPage(3);" title="">&gt;</a>
                                     <a href="javascript:jumpPage(4);" title="">末</a>
                                     <div class="clear"></div>
@@ -782,7 +782,7 @@
     </section>
     <!-- 公共底引入 -->
 </div>
-<script>f
+<script>
     function addComment(){
         var comcontent=$("#commentContent").val();
         $.ajax({
@@ -899,12 +899,13 @@
 
 
                 $("#pingul").html(pingul);
-                var totalPage=data.total%pageSize;
+                var totalPage=data.total/pageSize;
                 var pagenow="";
-                for(var i =1; i<totalPage; i++){
-                    pagenow+='<a href="javascript:jumpPage2('+i+');" title="">'+i+'</a>';
+                for(var i =0; i<totalPage; i++){
+                    var bbb=i+1;
+                    pagenow+='<a href="javascript:jumpPage2('+bbb+');" title="">'+bbb+'</a>';
                 }
-                $("#nowpage").html(pagenow);
+                $("#nowpage2").html(pagenow);
                 //总页数
                 $("#totalPage").val(totalPage);
                 //总条数
@@ -966,12 +967,13 @@
 
 
                 $("#pingul").html(pingul);
-                var totalPage=data.total%pageSize;
+                var totalPage=data.total/pageSize;
                 var pagenow="";
-                for(var i =1; i<totalPage; i++){
-                    pagenow+='<a href="javascript:jumpPage2('+i+');" title="">'+i+'</a>';
+                for(var i =0; i<totalPage; i++){
+                    var bbb=i+1;
+                    pagenow+='<a href="javascript:jumpPage2('+bbb+');" title="">'+bbb+'</a>';
                 }
-                $("#nowpage").html(pagenow);
+                $("#nowpage2").html(pagenow);
                 //总页数
                 $("#totalPage").val(totalPage);
                 //总条数

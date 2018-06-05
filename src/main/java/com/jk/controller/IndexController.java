@@ -243,9 +243,19 @@ public class IndexController {
 
     @RequestMapping("/queryIndexImg")
     @ResponseBody
-    public List<Img> queryIndexImg(){
+    public List<Img> queryIndexImg(HttpSession session){
+
         List<Img> list = indexService.queryIndexImg();
-        System.out.println(list);
+
+           for(int i=0;i<list.size();i++){
+
+            session.setAttribute("ee",list.get(0).getImg());
+
+            session.setAttribute("qq",list.get(1).getImg());
+
+            session.setAttribute("ww",list.get(2).getImg());
+        }
+
         return list;
     }
 

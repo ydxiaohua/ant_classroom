@@ -4,6 +4,7 @@ import com.alibaba.dubbo.common.json.JSONObject;
 import com.jk.model.Aop;
 import com.jk.model.Error;
 import com.jk.model.Comment;
+import com.jk.model.Te;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCursor;
@@ -118,6 +119,16 @@ public class CommentController {
         List<Aop>  aop = mongoTemplate.find(query,Aop.class);
 
         return aop;
+
+    }
+
+    //查询访问日志
+    @ResponseBody
+    @RequestMapping("queryuserte")
+    public List queryuserte(){
+        Query query= new Query();
+        List<Te>  te = mongoTemplate.find(query,Te.class);
+        return te;
 
     }
 

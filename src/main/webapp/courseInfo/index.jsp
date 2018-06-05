@@ -295,9 +295,29 @@
                 class="arrow-right s-arrow" href="javascript:void(0)"></a>
             <!-- 图片位置 -->
             <div class="swiper-container">
-                <div class="swiper-wrapper" id="lunbotu">
+                <div class="swiper-wrapper">
 
-
+                    <div class="swiper-slide"  style="background: #fafafa;;">
+                        <a target="_blank"
+                           href="http://www.itmayiedu.com/lc/locaMemberRecharge">
+                            <img class="imgload" src="${ee}"
+                                 alt="蚂蚁课堂VIP">
+                        </a>
+                    </div>
+                    <div class="swiper-slide"  style="background: #fafafa;;">
+                        <a target="_blank"
+                           href="http://www.itmayiedu.com/lc/locaMemberRecharge">
+                            <img class="imgload" src="${qq}"
+                                 alt="蚂蚁课堂VIP">
+                        </a>
+                    </div>
+                    <div class="swiper-slide"  style="background: #fafafa;;">
+                        <a target="_blank"
+                           href="http://www.itmayiedu.com/lc/locaMemberRecharge">
+                            <img class="imgload" src="${ww}"
+                                 alt="蚂蚁课堂VIP">
+                        </a>
+                    </div>
                 </div>
             </div>
             <!-- 如果需要分页器 -->
@@ -691,7 +711,7 @@
         }
     });
 function tiaocourseinfo(courseid){
-    alert(courseid);
+
     Location.href="courseInfo.jsp?courseid="+courseid;
 }
 
@@ -834,6 +854,8 @@ function tiaocourseinfo(courseid){
         });
     }
     $(function() {
+
+        tu();
         bnaAll();
     })
     function bnaAll(obj) {
@@ -1099,31 +1121,60 @@ function tiaocourseinfo(courseid){
     }
 
     function  qkson(){
-        alert("退出成功！请重新登录")
+
         var searchUrl =encodeURI("../courseInfo/index.jsp?uuid="+"qingchu");   //使用encodeURI编码
 
         window.location.href =searchUrl;
     }
 
-    $.ajax({
+
+
+
+function  tu() {
+       $.ajax({
         url:'<%=request.getContextPath()%>/index/queryIndexImg',
-        type:'get',
+        type:'post',
         dataType:'json',
         success:function(data){
-            var indeximg="";
-            for(var i = 0; i < data.length; i++) {
-                indeximg+='<div class="swiper-slide"'
-                    +'style="background: #fafafa;;">'
-                    +'<a target="_blank"'
-                    +'href="http://www.itmayiedu.com/lc/locaMemberRecharge">'
-                    +'<img class="imgload" src="'+data[i].img+'"'
-                    +'alt="蚂蚁课堂VIP">'
-                    +'</a>'
-                    +'</div>';
-            }
-            $("#lunbotu").html(indeximg);
+
+
         }
     });
+
+}
+
+
+
+
+</script>
+<script>
+    $(function() {
+
+        /*			if(otherAda()=='pc'){
+        $(".i-slide").addClass('i-slides');
+        $("#header").addClass('headers');
+        }*/
+        sSwiperFun(); //幻灯片调取
+        upSlideFun("#iQuestion"); //向上滚动互动
+        scrollLoad(); //响应滚动加载课程图片
+        $(".boutiqueCourse").click();//网校课程-精品课程
+        huanyihuan();
+        studentDynamic();//学生动态
+
+        var uri = window.location.search;
+        var val = "msg";
+        var re = new RegExp("" + val + "=([^&?]*)", "ig");
+        var msg = ((uri.match(re)) ? (uri.match(re)[0]
+            .substr(val.length + 1)) : null);
+        if (msg != null && msg != '' && msg == 'LimitLogin') {
+            dialog('提示信息', "您的帐号在其他地点登录，请重新登录", 1);
+        }
+    });
+
+
+
+
+
 </script>
 </body>
 <input type="hidden" id="userid" value="${pid}"/>
